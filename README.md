@@ -1,11 +1,13 @@
  > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
  > Prompt text is any lines beginning with "\>"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \<Project title\>
+# \<Dungeon Conquest>
  > Your author list below should include links to all members GitHub (remove existing author).
  
- > Authors: \<[Jeffrey McDaniel](https://github.com/jmcda001)\>
- 
+ > Authors: \<[Huy Ngo](https://github.com/Tentorfield)\> 
+ > Authors: \<[Eugene Baldonado](https://github.com/EugeneBaldonado)\> 
+ > Authors: \<[Harrison Cooper](https://github.com/Harry64C)\> 
+ > Authors: \<[Dong Liu](https://github.com/Dliu117)\> 
  > You will be forming a group of **FOUR** students and working on an interesting project. The project has 4 phases, each one with specific requirements. A list of proposed project ideas that have been successful in previous quarters is listed in the project specifications document on Canvas. You can select an idea from the list, start thinking about the features you will implement, what design patterns can help you implement them, and why. If you want to propose your own original idea, you will have to contact an instructor to discuss the project and obtain written permission before you submit your project proposal (Phase 1). Your project needs to implement at least two design patterns iteratively, which you will have to justify for later phases.The project work should be divided almost equally among team members and each member is expected to work on at least one design pattern (more than one partner may work on a pattern) and some of its test cases. You can of course help each other, but it needs to be clear who will be responsible for which patterns and for which features. Additionally, you are expected to follow Scrum patterns, specifically the use of a Scrum (Project) board, Sprints, and Scrum meetings. While Daily Scrums are not required we highly recommend you practice them too.
  
  > ## Expectations
@@ -21,10 +23,12 @@
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include:
  > * Why is it important or interesting to you?
+ > We all played adventure games as kids. So it would be fun to actually made one for ourselves. 
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
+ >   * [Composite](https://www.tutorialspoint.com/design_pattern/composite_pattern.htm) - Since there will be a hierachical structure in the game, this design pattern uses the tree structure to represent the progressively difficult bosses for each level or stage. For example: Level 1 - Level II, Level III ... Level VIII. 
+ >   * [Factory](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm) - We plan to have two Super Classes "Hero" and "Dungeon". The Hero's subclasses will most likely be "Weapon", "Health", "Armor", "Exp."..etc. For Dungeon's subclasses, it will probably include: "Stages", "Minions", "BossType", "FinalBoss"...etc.   
  > * What will be the input/output of your project? What are the features that the project provides?
- > 
+ > For now, our main objective for input and output will take place in PuTTy's terminal since the game is primarily text-based. If there is extra time alloted, images will pop up when the player encounters a situation of interests. Our output will use "#include <opencv2/opencv.hpp>" so that a display window will project the image(s). The inputs may include keyboard and mouse when interacting with objects. 
  > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
  > 
  > You also need to set up an empty project board by choosing the  “Automated kanban with review” option on Github. You should also have a Backlog and In testing columns added.
