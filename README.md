@@ -14,15 +14,9 @@
 * [Factory](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm) - We plan to have two Super Classes "Hero" and "Dungeon". The Hero's subclasses will most likely be "Weapon", "Health", "Armor", "Exp."..etc. For Dungeon's subclasses, it will probably include: "Stages", "Minions", "BossType", "FinalBoss"...etc.   
 * For now, our main objective for input and output will take place in PuTTy's terminal since the game is primarily text-based. If there is extra time alloted, images will pop up when the player encounters a situation of interests. Our output will use "#include <opencv2/opencv.hpp>" so that a display window will project the image(s). The inputs may include keyboard and mouse when interacting with objects. 
 
-> ## Phase II
- > In addition to completing the "Class Diagram" section below, you will need to:
- > * Create an "Epic" (note) for each feature and each design pattern and assign them to the appropriate team member. Place these in the `Backlog` column
- > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.
- >   * Create smaller actionable development tasks as issues and assign them to team members. Place these in the `TODO` column.
- >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
 ## Class Diagram
 [Dungeon Masters UML Class Diagram](https://lucid.app/documents/embeddedchart/f6655ad8-9027-43a4-b3ce-36ae92e1ef74)
- 
+Based on the UML Diagram, the stragety patterns that we will use are Composite and Factory design patterns. It is an obvious design decision to choose Composite as our main design pattern for Dungeon Conquest. This is because Composite design pattern helps eliminate the complexity of various components by treating all objects the same. In this case, "Character" class and "BaseAttributes" class would follow the Composite design pattern. We choose Factory design pattern because we expect the subclasses of "Monster" class to be able to freely choose the type of objects to create, because each subclass (Dwarf, Ghost, and Normal) to react differently from the player's attacks. We also believe that Factory design pattern is similar to Composite in terms of providing a cleaner look for interface oriented methods, rather than implementation. 
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
  > * Before the meeting you should perform a sprint plan like you did in Phase II.
