@@ -21,7 +21,7 @@
  >   * Create smaller actionable development tasks as issues and assign them to team members. Place these in the `TODO` column.
  >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
 ## Class Diagram
-div style="width: 960px; height: 720px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:960px; height:720px" src="https://lucid.app/documents/embeddedchart/f6655ad8-9027-43a4-b3ce-36ae92e1ef74" id="0bSpcrKAwbcN"></iframe></div>
+[Dungeon Masters UML Class Diagram](https://lucid.app/documents/view/f6655ad8-9027-43a4-b3ce-36ae92e1ef74)
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
