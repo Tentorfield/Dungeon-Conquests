@@ -6,16 +6,13 @@ using namespace std;
 
 class Stat { 
     public:
-        /* Constructors */
         Stat() { }
+	virtual void increaseVal(int) { calculate(); }
+	virtual double getVal() = 0;
 
     private:
-	
-        /* Pure Virtual Functions */
-	virtual void increaseVal(int) = 0;
-	virtual double getVal() = 0;
-        virtual double calculate() = 0;
-
+	double BodyVal;
+        virtual void calculate() = 0; // helper function for increaseVal
 };
 
 #endif //__STAT_HPP__
