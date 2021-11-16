@@ -35,7 +35,7 @@ class Player{
 		void nextLevel(int _level){
 			level = _level;
 			if (Monster->isEliminate){
-				exp =  500 * pow(level, 2) - (500 * level);
+				this->exp =  500 * pow(level, 2) - (500 * level);
 				level++;
 			}
 		}
