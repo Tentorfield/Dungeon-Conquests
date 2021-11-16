@@ -18,13 +18,13 @@
 [Dungeon Masters UML Class Diagram](https://lucid.app/documents/embeddedchart/f6655ad8-9027-43a4-b3ce-36ae92e1ef74)
 * Based on the UML Diagram, the stragety patterns that we will use are Composite and Factory design patterns. It is an obvious design choice to choose Composite as our main design pattern for Dungeon Conquest. This is because Composite design pattern helps eliminate the complexity of various components by treating all objects the same. In this case, "Character" class and "BaseAttributes" class would follow the Composite design pattern. We choose Factory design pattern because we expect the subclasses of "Monster" class to be able to freely choose the type of objects it wishes to create, because each subclass (Dwarf, Ghost, and Normal) should react differently from the player's attacks. We also believe that Factory design pattern is similar to Composite in terms of providing a cleaner look for interface oriented methods, rather than implementation. 
 
-* You should also update this README file by adding the following:
-* What design patterns did you use? For each design pattern you must explain in 4-5 sentences:
-* Why did you pick this pattern? And what feature did you implement with it?
-* How did the design pattern help you write better code?
 ## Updated Class Diagram
 [Dungeon Masters UML Class Diagram](https://lucid.app/documents/embeddedchart/f6655ad8-9027-43a4-b3ce-36ae92e1ef74)
- 
+
+* We decide to stick with Composite and Factory patterns for our project. However, there are several major changes in our updated UML diagram that we would like to mention, specifically Composite Pattern. First, we decided to scrap the original "BaseAttributes" class implementation, replaced it with the "Stats" and its derived classes as our. For each level up, the player will have the option to allocate their 10 stats points on Mind, Body, and Spirit. These three atributes has a major impact on the multipliers for the player's health, attack, magic, and defense.  
+
+* Overall, the two design patterns help us plan for our game in a more organized matter. In a sense, the composite pattern made the workflow alot easier when coding player-sided perspective. This is because composite pattern made the connections of many components comprehenable. This way, we are able to easily structure groups like the Player and Stats class as a whole. For Monster Class, using factory pattern ended up being the right decision because we want the complexities derived from Monster Class to be simplified for the client or interface. Also, since the characteristics of the three types of monsters (Dwarfs, Ghost, Normal) are monotonal, we are able to use factory pattern to increased the consistency among the three monster sub-classes.   
+
 > During the meeting with your TA you will discuss: 
  > * How effective your last sprint was (each member should talk about what they did)
  > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
