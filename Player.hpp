@@ -12,7 +12,7 @@ class Player{
 		Stats *Stats;
 		Monster *Monster;
 		int level;
-		int exp;
+		int expPoints;
 		double health; 
 		double physicalAtkMult;
 		double healthMult;
@@ -21,7 +21,7 @@ class Player{
 		Player(){ };
 		Player(string _name, double _health): name(_name), health(_health){}; 
 		void setExp(){
-			exp = 0;
+			expPoints = 0;
 		}
 		int getExp(){
 			return exp;
@@ -35,7 +35,7 @@ class Player{
 		void nextLevel(int _level){
 			level = _level;
 			if (Monster->isEliminate){
-				this->exp =  500 * pow(level, 2) - (500 * level);
+				expPoints =  500 * pow(level, 2) - (500 * level);
 				level++;
 			}
 		}
