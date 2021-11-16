@@ -1,9 +1,9 @@
-
 #ifndef __STAT_HPP__
 #define __STAT_HPP__
 
-using namespace std;
+#include "Player.hpp"
 
+using namespace std;
 class Stat { 
     public:
         Stat() { }

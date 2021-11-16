@@ -2,6 +2,7 @@
 #ifndef __MIND_HPP__
 #define __MIND_HPP__
 
+#include "../stats/Stat.hpp"
 
 class Mind : public Stat { 
     public:

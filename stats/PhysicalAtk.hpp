@@ -2,8 +2,9 @@
 #ifndef __PHYSICAL_ATK_HPP__
 #define __PHYSICAL_ATK_HPP__
 
+#include "../stats/Body.hpp"
 
-class PhysicalAtk : public Stat { 
+class PhysicalAtk : public Body { 
     public:
         PhysicalAtk() { }
 	virtual void increaseVal(int) { calculate(); }
