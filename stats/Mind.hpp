@@ -1,18 +1,18 @@
 
-#ifndef __BODY_HPP__
-#define __BODY_HPP__
+#ifndef __MIND_HPP__
+#define __MIND_HPP__
 
 
-class Body : public Stat { 
+class Mind : public Stat { 
     public:
-        Body() { }
+        Mind() { }
 	virtual void increaseVal(int) { calculate(); }
 	virtual double getVal() = 0;
 
     private:
-	double BodyVal;
+	double MindVal;
         virtual void calculate() = 0; // helper function for increaseVal
 
 };
 
-#endif //__BODY_HPP__
+#endif //__MIND_HPP__

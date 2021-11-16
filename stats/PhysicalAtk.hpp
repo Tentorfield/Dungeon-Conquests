@@ -1,18 +1,18 @@
 
-#ifndef __BODY_HPP__
-#define __BODY_HPP__
+#ifndef __PHYSICAL_ATK_HPP__
+#define __PHYSICAL_ATK_HPP__
 
 
-class Body : public Stat { 
+class PhysicalAtk : public Stat { 
     public:
-        Body() { }
+        PhysicalAtk() { }
 	virtual void increaseVal(int) { calculate(); }
 	virtual double getVal() = 0;
 
     private:
-	double BodyVal;
+	double PhysicalAtkVal;
         virtual void calculate() = 0; // helper function for increaseVal
 
 };
 
-#endif //__BODY_HPP__
+#endif //__PHYSICAL_ATK_HPP__

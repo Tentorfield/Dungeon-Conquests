@@ -1,18 +1,19 @@
 
-#ifndef __BODY_HPP__
-#define __BODY_HPP__
+#ifndef __SPIRIT_HPP__
+#define __SPIRIT_HPP__
 
+#include "Stat.hpp"
 
-class Body : public Stat { 
+class Spirit : public Stat { 
     public:
-        Body() { }
+        Spirit();
 	virtual void increaseVal(int) { calculate(); }
 	virtual double getVal() = 0;
 
     private:
-	double BodyVal;
+	double spiritVal;
         virtual void calculate() = 0; // helper function for increaseVal
 
 };
 
-#endif //__BODY_HPP__
+#endif //__SPIRIT_HPP__
