@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "Stats.hpp"
 
 using namespace std;
 
@@ -20,14 +21,14 @@ class Player{
 	public:
 		Player(){ };
 		Player(string _name, double _health): name(_name), health(_health){}; 
-		void setExp(){
-			expPoints = 0;
+		void setExp(int _exp){
+			expPoints = _exp;
 		}
 		int getExp(){
 			return exp;
 		}
-		void setLevel(){
-			level = 1;
+		void setLevel(int _level){
+			level = _level;
 		}
 		int getLevel(){
 			return level;

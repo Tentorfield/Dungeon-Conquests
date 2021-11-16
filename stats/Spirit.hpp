@@ -2,7 +2,7 @@
 #ifndef __SPIRIT_HPP__
 #define __SPIRIT_HPP__
 
-#include "Stat.hpp"
+#include "../stats/Stat.hpp"
 
 class Spirit : public Stat { 
     public:
