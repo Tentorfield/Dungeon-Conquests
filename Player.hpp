@@ -3,21 +3,23 @@
 
 #include <iostream>
 #include <string>
-#include "Stats.hpp"
+#include "stats/Stat.cpp"
 
 using namespace std;
 
 class Player{
 	private:
 		string name;
-		Stats *Stats;
 		Monster *Monster;
 		int level;
 		int expPoints;
-		double health; 
-		double physicalAtkMult;
-		double healthMult;
-		double defenseMut;
+		
+		Stat* Stats;
+		// no need for a local copy of player stats
+		// when you want defense for example, just call Stats->getDefense();
+		
+		int freePoints;
+		
 	public:
 		Player(){ };
 		Player(string _name, double _health): name(_name), health(_health){}; 
@@ -38,11 +40,40 @@ class Player{
 			if (Monster->isEliminate){
 				expPoints =  500 * pow(level, 2) - (500 * level);
 				level++;
+				freePoints += 10;
+				// freePoints are gained on level up. 
+				// The player can raise their stats by allocating points with 
+				// Stats->allocatePoints(int bodyAllocation, int mindAllocation, int spiritAllocation); 
 			}
 		}
-		virtual void specialHit() = 0;
-		virtual double PhysicalHit() = 0;
-		virtual double MagicalHit() = 0;
-		virtual void Bonus(int level, double AtkMult, double MagicMult, double MagicMult, double HealthMult, double DefenseMult) = 0;
+
+		string distributePoints() { 
+			int bodyAllocation, mindAllocation, spiritAllocation;
+			cout << "How many points would you like to invest in Body? ";
+			cin >> bodyAllocation;	
+			cout << "\nHow many points would you like to invest in Mind? ";
+			cin >> mindAllocation;
+			cout << "\nHow many points would you like to invest in Spirit? ";
+			cin >> spiritAllocation;
+			cout << endl;
+
+			if ( freePoints < (bodyAllocation + mindAllocation + spiritAllocation) ) {
+				return "insufficient free points";
+			}
+
+			Stats->allocatePoints(bodyAllocation, mindAllocation, spiritAllocation);
+			return "Stats successfully allocated. See new stats? (y/n) ";
+		}
+
+		void displayPlayerStats() {
+			cout << "\n________________\n" << "Body: " << Stats->getBody() << "\nMind: " << Stats->getMind()<< "\nSpirit: " << Stats->getSpirit()
+			<< "\nPhysicalAttack Damage: " << Stats->getPhysicalAtk()<< "\nMagicalAttack Damage: " << Stats->getMagicAtk() 
+			<< "\nDefense: " << Stats->getDefense() << "\nMax Health: " << Stats->getMaxHealth() << "\n_______________" << endl;
+		}
+
+		//virtual void specialHit() = 0;
+		
+		// when you want attack, just call Stats->getPhysicalAtk or Stats->getMagicAtk
+
 };
 #endif 
