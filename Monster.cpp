@@ -7,6 +7,10 @@ void Monster::SetAtk(double val){
 	this->Attack = val;
 }
 
+void Monster::setMaxHealth(double val){
+	this->maxHealth = val;
+}
+
 void Monster::SetPhysicalDef(double val){
 	this->PhysicalDef = val;
 }
