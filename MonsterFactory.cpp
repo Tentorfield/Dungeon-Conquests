@@ -36,7 +36,7 @@
 		//Normal Monster
 		double normDefAtk = rand() % (10 * difficulty) + (difficulty * difficulty); 
 		double normHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		Normal* randomMonster = new Normal(normHth, normDefAtk, normDefAtk, normDefAtk);
+		randomMonster = new Normal(normHth, normDefAtk, normDefAtk, normDefAtk);
 		return randomMonster;
 		} 
 		else if (monsterType = 1){
@@ -45,7 +45,7 @@
 		double ghostPDef = 2 * rand() % (10 * difficulty) + (difficulty * difficulty);
 		double ghostMDef = 0.5 * rand() % (10 * difficulty) + (difficulty * difficulty);
 		double ghostHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		Ghost* randomMonster = new Ghost(ghostHth, ghostAtk, ghostPDef, ghostMDef); 
+		randomMonster = new Ghost(ghostHth, ghostAtk, ghostPDef, ghostMDef); 
 		return randomMonster;
 		}
 		else{
@@ -54,7 +54,7 @@
 		double dwarfPDef = 0.5 * rand() % (10 * difficulty) + (difficulty * difficulty);
 		double dwarfMDef = 2 * rand() % (10 * difficulty) + (difficulty * difficulty);
 		double dwarfHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		Dwarf* randomMonster = new Dwarf(dwarfHth, dwarfAtk, dwarfPDef, dwarfMdef);
+		randomMonster = new Dwarf(dwarfHth, dwarfAtk, dwarfPDef, dwarfMdef);
 		return randomMonster;
 		}                
 	}
