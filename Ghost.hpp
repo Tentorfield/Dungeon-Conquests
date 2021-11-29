@@ -4,8 +4,8 @@
 
 class Ghost  : Monster {
         Public:
-                Ghost(double Hth, double Atk, double PDef, double Mdef, double MdefMult, double PDefMult );
-                double MonsterHit();
+                Ghost(double Hth, double Atk, double PDef, double Mdef);
+                double monsterHit();
 
 
 

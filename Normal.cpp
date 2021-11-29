@@ -1,19 +1,17 @@
 #include "Normal.hpp"
 
-Normal::Normal(double Hth, double Atk, double PDef, double Mdef, double MdefMult, double PDefMult ){
+Normal::Normal(double Hth, double Atk, double PDef, double Mdef){
         Health = Hth;
         Attack = Atk;
         PhysicalDef = Pdef;
         MagicalDef = Mdef;
-        MagicalDefMult = MdefMult;
-        PhysicalDefMult = PDefMult;
 }
 
 Normal::~Normal(){
-        //implement
+        delete this;
 }
         
-double Normal::MonsterHit(){
-        return Atk*1.1;
+double Normal::monsterHit(){
+        return attack*1.1;
 }
 

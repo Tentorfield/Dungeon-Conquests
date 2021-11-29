@@ -3,30 +3,30 @@
 
 using namespace std;
 
-void Monster::SetAtk(double val){
-	this->Attack = val;
+void Monster::setAttack(double val){
+	this->attack = val;
 }
 
 void Monster::setMaxHealth(double val){
 	this->maxHealth = val;
 }
 
-void Monster::SetPhysicalDef(double val){
-	this->PhysicalDef = val;
+void Monster::setPhysicalDef(double val){
+	this->physicalDef = val;
 }
 
-void Monster::SetMagicalDef(double val){
-	this->MagicalDef = val;
+void Monster::setMagicalDef(double val){
+	this->magicalDef = val;
 }
 
-double  Monster::GetAtk(){
-	return this->Attack;
+double  Monster::getAtk(){
+	return this->attack;
 }
 
-double Monster::GetMagicalDef(){
+double Monster::getMagicalDef(){
 	return this->MagicalDef;
 }
 
-double Monster::GetPhysicalDef(){
+double Monster::getPhysicalDef(){
 	return this->PhysicalDef;
 }
