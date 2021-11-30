@@ -12,7 +12,7 @@ Dwarf::~Dwarf(){
 }
 
 int Dwarf::monsterHit(){
-	return static_cast<int>(attack*1.1);
+	return static_cast<int>(.55 * (attack + ((rand() % attack))));
 }
 
 void Dwarf::setAttack(int val){
@@ -45,5 +45,11 @@ int Dwarf::getMagicalDef(){
 
 int Dwarf::getPhysicalDef(){
 	return this->physicalDef;
+}
+
+
+string Dwarf::monsterType() {
+        string type = "Dwarf";
+	return type;
 }
 

@@ -12,7 +12,7 @@ Ghost::~Ghost(){
 }
 
 int Ghost::monsterHit(){
-        return static_cast<int>(attack*1.1);
+        return static_cast<int>(.55 * (attack + ((rand() % attack))));
 }
 
 void Ghost::setAttack(int val){
@@ -47,4 +47,7 @@ int Ghost::getPhysicalDef(){
 	return this->physicalDef;
 }
 
-
+string Ghost::monsterType() { 
+	string type =  "Ghost";
+	return type;
+}

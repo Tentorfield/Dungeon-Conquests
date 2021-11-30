@@ -49,8 +49,9 @@
 			cout << "EXP CAP: " << exp_cap[level] << endl;
 			cout << "CURRENT LEVEL: " << level << endl;
 			cout << "CURRENT EXP: " << expPoints << endl;
+			expPoints += 250 * level;
 			while (expPoints >= exp_cap[level]){
-				expPoints +=  500 * pow(level, 2) - (500 * level);
+				//expPoints +=  500 * pow(level, 2) - (500 * level);
 				cout << "Current EXP points: " << expPoints << endl;
 				level++;
 				freePoints += 10;
@@ -85,6 +86,6 @@
 		void Player::displayPlayerStats() {
 			cout << "\n________________\n" << "Body: " << Stats->getBody() << "\nMind: " << Stats->getMind()<< "\nSpirit: " << Stats->getSpirit()
 			<< "\nPhysicalAttack Damage: " << Stats->getPhysicalAtk()<< "\nMagicalAttack Damage: " << Stats->getMagicAtk() 
-			<< "\nDefense: " << Stats->getDefense() << "\nMax Health: " << Stats->getMaxHealth() << "\n_______________" << endl;
+			<< "\nDefense: " << Stats->getDefense() << "\nHealth: " << currentHealth << " / " <<  Stats->getMaxHealth() << "\n_______________" << endl;
 		}
 

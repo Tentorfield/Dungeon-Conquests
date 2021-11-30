@@ -17,6 +17,7 @@ class Ghost : public Monster {
                  int getMagicalDef();
                  int getPhysicalDef();
                  int monsterHit();
+		 string monsterType();
 
 
 };
