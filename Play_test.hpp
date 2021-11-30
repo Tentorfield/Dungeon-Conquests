@@ -29,5 +29,8 @@ TEST(PlayerTest, getName_Test){
 TEST(PlayerTest, getCurrentHealth_Test){
 	Player* PlayerTest = new Player();
 	PlayerTest->setCurrentHealth(78);
+	p_iUXcEjkMF880ff2eQVSUhS4LYG0kbh2dQEHq
 	EXPECT_EQ(PlayerTest->getCurrentHealth(),78);
 }
+
+#endif
