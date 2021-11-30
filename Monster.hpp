@@ -13,7 +13,7 @@ class Monster{
 		virtual int getMagicalDef() = 0;
 		virtual int getPhysicalDef() = 0;
 		virtual int monsterHit() = 0;
-	private:
+	protected:
 		int maxHealth;
 		int attack;
 		int physicalDef;

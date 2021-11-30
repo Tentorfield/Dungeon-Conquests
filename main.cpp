@@ -1,6 +1,6 @@
 
-#include "Player.hpp"
-#include "MonsterFactory.cpp"
+#include "Player.cpp"
+//#include "MonsterFactory.hpp"
 #include <iostream>
 
 using namespace std;

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "stats/Stat.cpp"
+#include "MonsterFactory.cpp"
 #include <cmath>
 using namespace std;
 
@@ -39,3 +40,5 @@ class Player{
 		void setPoints(int _freePoints);
 		int getPoints();
 		void nextLevel();
+};
+#endif
