@@ -16,7 +16,6 @@ class Player{
 		int expPoints;
 		//int maxHealth;
 		//int currentHealth;
-		Stat* Stats;
 		// no need for a local copy of player stats
 		// when you want defense for example, just call Stats->getDefense();
 
@@ -24,6 +23,7 @@ class Player{
 		int currentHealth;
 
 	public:
+		Stat* Stats;
 		Player();
 	//	Player(string _name, int _currenthealth, int _maxHealth int _level, int _expPoints, int _freePoints);
 		void setName(string _name);
@@ -36,7 +36,8 @@ class Player{
 		int getCurrentHealth();
 	//	void setHealth(int _health);
 		int getMaxHealth();
-
+		string distributePoints();
+		void displayPlayerStats();
 		void setPoints(int _freePoints);
 		int getPoints();
 		void nextLevel();

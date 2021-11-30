@@ -6,19 +6,23 @@
 	MonsterFactory::MonsterFactory() {
 		
 		this->floor = 1;
-	
+		randomMonster = nullptr;	
 	}
 
-	MonsterFactory::MonsterFactory(int floor){
+	MonsterFactory::MonsterFactory(int _floor){
 		
-		this->floor = floor;
+		this->floor = _floor;
+		randomMonster = nullptr;
+	}
 
+	int MonsterFactory::getFloor(){
+		return this->floor;
 	}
 
 	// generates a random monster based off the floor the player is on 
-	Monster* getMonster(){
+	Monster* MonsterFactory::getMonster(){
 		srand(time(NULL)); // initializes a random seed (makes rand actually random);
-		int difficulty = floor * floor;			
+		int difficulty = this->floor * this->floor;			
 		
 /*
 		randomMonster->setAttack(rand() % (10 * difficulty) + (difficulty * difficulty)); // if floor is 1, the monster's attack will be between 1 and 10
@@ -32,29 +36,36 @@
 */
 
 		int monsterType = rand() % 3;
+		int normAtk = rand() % (10 * difficulty) + (difficulty * difficulty);
+		int  normPDef = rand() % (10 * difficulty) + (difficulty);
+		int  normMDef = rand() % (10 * difficulty) + (difficulty);
+                int  normHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
+
 		if (monsterType = 0){
 		//Normal Monster
-		double normDefAtk = rand() % (10 * difficulty) + (difficulty * difficulty); 
-		double normHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		randomMonster = new Normal(normHth, normDefAtk, normDefAtk, normDefAtk);
+		//double normDefAtk = rand() % (10 * difficulty) + (difficulty * difficulty); 
+		//double normHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
+		//randomMonster = new Normal(normHth, normDefAtk, normDefAtk, normDefAtk);
+		randomMonster = new Normal(normHth, normAtk, normPDef, normMDef); 
 		return randomMonster;
 		} 
 		else if (monsterType = 1){
 		//Ghost Monster
-		double ghostAtk = rand() % (10 * difficulty) + (difficulty * difficulty);
-		double ghostPDef = 2 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		double ghostMDef = 0.5 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		double ghostHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		randomMonster = new Ghost(ghostHth, ghostAtk, ghostPDef, ghostMDef); 
+		//double ghostAtk = rand() % (10 * difficulty) + (difficulty * difficulty);
+		//double ghostPDef = 2 * rand() % (10 * difficulty) + (difficulty * difficulty);
+		//double ghostMDef = 0.5 * rand() % (10 * difficulty) + (difficulty * difficulty);
+		//double ghostHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
+		randomMonster = new Ghost(normHth, normAtk, normPDef, normMDef); 
 		return randomMonster;
 		}
 		else{
 		//Dwarf Monster
-		double dwarfAtk = rand() % (10 * difficulty) + (difficulty * difficulty);
-		double dwarfPDef = 0.5 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		double dwarfMDef = 2 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		double dwarfHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
-		randomMonster = new Dwarf(dwarfHth, dwarfAtk, dwarfPDef, dwarfMdef);
+		//double dwarfAtk = rand() % (10 * difficulty) + (difficulty * difficulty);
+		//double dwarfPDef = 0.5 * rand() % (10 * difficulty) + (difficulty * difficulty);
+		//double dwarfMDef = 2 * rand() % (10 * difficulty) + (difficulty * difficulty);
+		//double dwarfHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
+		//randomMonster = new Dwarf(dwarfHth, dwarfAtk, dwarfPDef, dwarfMdef);
+		randomMonster = new Dwarf(normHth, normAtk, normPDef, normMDef); 
 		return randomMonster;
 		}                
 	}

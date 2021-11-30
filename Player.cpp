@@ -8,6 +8,7 @@
 			this->expPoints = 0;
 			this->freePoints = 0;
 			this->Stats = new Stat();
+			this->currentHealth = getMaxHealth();
 		}
 
 		/*Player::Player(string _name, int _health, int _level, int _expPoints, int _freePoints): name(_name), health(_health), level(_level), expPoints(_expPoints), freePoints(_freePoints){}; 
