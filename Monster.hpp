@@ -8,7 +8,7 @@ class Monster{
 		virtual void setPhysicalDef(int val) = 0;
 		virtual void setMagicalDef(int val) = 0;
 		virtual void setMaxHealth(int val) = 0;
-		virtual void getMaxHealth() = 0;
+		virtual int getMaxHealth() = 0;
 		virtual int getAttack() = 0;
 		virtual int getMagicalDef() = 0;
 		virtual int getPhysicalDef() = 0;

@@ -1,11 +1,11 @@
 
 #include "Normal.hpp"
 
-Normal::Normal(int Hth, int Atk, int PDef, int Mdef){
+Normal::Normal(int Hth, int Atk, int PDef, int MDef){
 	maxHealth = Hth;
 	attack = Atk;
-	physicalDef = Pdef;
-	magicalDef = Mdef;
+	physicalDef = PDef;
+	magicalDef = MDef;
 }
 
 Normal::~Normal(){
@@ -13,7 +13,7 @@ Normal::~Normal(){
 }
 
 int Normal::monsterHit(){
-	return static_cast<int>attack*1.1;
+	return static_cast<int>(attack*1.1);
 }
 
 void Normal::setAttack(int val){
@@ -36,7 +36,7 @@ int Normal::getMaxHealth(){
 	return this->maxHealth;
 }
 
-int  Normal::getAtk(){
+int  Normal::getAttack(){
 	return this->attack;
 }
 

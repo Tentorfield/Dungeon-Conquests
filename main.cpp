@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void introduction(Player* player) { 
+void introduction(Player* &player) { 
 	cout << "Welcome to Dungeon Conquest! Would you like to know how to play? Press 'Y/y' if so." << endl;
 	char input;
 	cin >> input;
@@ -16,7 +16,7 @@ void introduction(Player* player) {
 	cout << "What is your name, traveler?" << endl;
 	string name;
 	getline(cin, name);
-	player.setName(name);
+	player->setName(name);
 	cout << "Welcome, " << name << " you have just entered the dungeon!" << endl;
 	return;
 }
@@ -25,29 +25,30 @@ void introduction(Player* player) {
 void fight(Player* &player, Monster* monster, bool &endOfGame) { 
 	cout << "You encounter a monster!" << endl;
 	int option = 0;
-	int mHth = monster->getMaxHealth;
+	int mHth = monster->getMaxHealth();
+	cout << "The monster's health is at " << mHth << endl << "Your player's health is at " << player->getCurrentHealth() << endl;
 	while( (mHth > 0) && (player->getCurrentHealth() > 0) ){ 
 	    cout << "Choose an option: Inspect(1), Physical Attack(2), Magical Attack(3)" << endl;
 	    cin >> option;
 	    if (option == 1) { 
 		//monster->displayStats();
-		cout << "ATTACK:" << monster->getAtk << endl;
-		cout << "MAGICAL DEF:" << monster->magicalDef << endl;
-		cout << "PHYSICAL DEF:" << monster->PhysicalDef << endl;
+		cout << "ATTACK:" << monster->getAttack() << endl;
+		cout << "MAGICAL DEF:" << monster->getMagicalDef() << endl;
+		cout << "PHYSICAL DEF:" << monster->getPhysicalDef() << endl;
 	    }
 	    else if (option == 2) { 
-		cout << "You attack the monster and deal " << player->Stats->getPhysicalAtk() << " damage!" << endl;
-		mHth -= player->Stats->getPhysicalAtk();
+		cout << "You attack the monster and deal " << player->Stats->getPhysicalAtk() - monster->getPhysicalDef() << " damage!" << endl;
+		mHth -= (player->Stats->getPhysicalAtk() - monster->getPhysicalDef());
 		cout << "The monster counter-attacked! You took " << monster->monsterHit() << " damage." << endl; 
-		player->setCurrentHealth(player->getCurrentHealth - monster->monsterHit());
+		player->setCurrentHealth(player->getCurrentHealth() - monster->monsterHit());
 		cout << "Monster Health : " << mHth << endl;
 		cout << "Player Health : " << player->getCurrentHealth() << endl;	
 	    }
 	    else if (option == 3) { 
-		cout << "You attack the monster and deal " << player->Stats->getMagicAtk() << " damage!" << endl;
-                mHth -= player->Stats->getMagicAtk();
+		cout << "You attack the monster and deal " << player->Stats->getMagicAtk() - monster->getMagicalDef() << " damage!" << endl;
+                mHth -= (player->Stats->getMagicAtk() - monster->getPhysicalDef());
                 cout << "The monster counter-attacked! You took " << monster->monsterHit() << " damage." << endl;
-                player->setCurrentHealth(player->getCurrentHealth - monster->monsterHit());
+                player->setCurrentHealth(player->getCurrentHealth() - monster->monsterHit());
                 cout << "Monster Health : " << mHth << endl;
                 cout << "Player Health : " << player->getCurrentHealth() << endl;
 
@@ -57,7 +58,7 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 	    }
 	}
 	if (mHth <= 0) { 
-	    cout << "You have defeated the  monster!" << endl;
+	    cout << "You have defeated the monster!" << endl;
 	    // function for exp allocation is called
 	    return;
 	}
@@ -76,9 +77,9 @@ int main(){
     bool endOfGame = false;
     int floor = 1;
  
-    Player* Player = new Player();	
+    Player* player = new Player();	
 
-    introduction(Player);
+    introduction(player);
 
     MonsterFactory* factory = new MonsterFactory(floor);
     
@@ -88,7 +89,7 @@ int main(){
 	    if (input == 1) { 
 		int outcome = rand() % 2;
 
-		if(player->getLevel > MonsterFactory->floor){
+		if(player->getLevel() > factory->getFloor()){
 		    int nextFloor = rand() % 2;
 			if (nextFloor == 1){	
 				MonsterFactory* tmp = factory;
@@ -100,9 +101,9 @@ int main(){
 		}
 	        
 		if (outcome == 1){
-                   fight(Player, factory->getMonster(), endOfGame);
+                   fight(player, factory->getMonster(), endOfGame);
                 }
-		else (outcome == 2){
+		else {
 		   cout << "You tread carefully through the corridor..." << endl;
 		}
 
@@ -110,7 +111,7 @@ int main(){
 	    else if (input == 2) { 
                 int outcome = rand() % 2;
 
-                if(player->getLevel > MonsterFactory->floor){
+                if(player->getLevel() > factory->getFloor()){
                     int nextFloor = rand() % 2;
                         if (nextFloor == 1){
                                 MonsterFactory* tmp = factory;
@@ -122,16 +123,16 @@ int main(){
                 }
 
                 if (outcome == 1){
-                   fight(Player, factory->getMonster(), endOfGame);
+                   fight(player, factory->getMonster(), endOfGame);
                 }
-                else (outcome == 2){
+                else {
                    cout << "You hear strange sounds echo throughout the dungeon..." << endl;
                 }
 	    }
 	    else if (input == 3) { 
                 int outcome = rand() % 2;
 
-                if(player->getLevel > MonsterFactory->floor){
+                if(player->getLevel() > factory->getFloor()){
                     int nextFloor = rand() % 2;
                         if (nextFloor == 1){
                                 MonsterFactory* tmp = factory;
@@ -143,9 +144,9 @@ int main(){
                 }
 
                 if (outcome == 1){
-                   fight(Player, factory->getMonster(), endOfGame);
+                   fight(player, factory->getMonster(), endOfGame);
                 }
-                else (outcome == 2){
+                else {
                    cout << "You tread carefully through the corridor..." << endl;
                 }
 
@@ -154,9 +155,6 @@ int main(){
 	        cout << "Invalid input" << endl;
 	    }
 	}
-
-
-    }
 
     return 0;
 }

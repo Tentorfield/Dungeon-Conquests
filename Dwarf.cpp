@@ -1,18 +1,18 @@
 #include "Dwarf.hpp"
 
-Dwarf::Dwarf(int Hth, int Atk, int PDef, int Mdef){
+Dwarf::Dwarf(int Hth, int Atk, int PDef, int MDef){
 	maxHealth = Hth;
 	attack = Atk;
-	physicalDef = Pdef;
-	magicalDef = Mdef;
+	physicalDef = static_cast<int>(.5 * PDef);
+	magicalDef = static_cast<int>(2 * MDef);
 }
 
 Dwarf::~Dwarf(){
 	delete this;
 }
 
-int Dwarf::DwarfHit(){
-	return static_cast<int>attack*1.1;
+int Dwarf::monsterHit(){
+	return static_cast<int>(attack*1.1);
 }
 
 void Dwarf::setAttack(int val){
@@ -35,7 +35,7 @@ int Dwarf::getMaxHealth(){
 	return this->maxHealth;
 }
 
-int  Dwarf::getAtk(){
+int  Dwarf::getAttack(){
 	return this->attack;
 }
 

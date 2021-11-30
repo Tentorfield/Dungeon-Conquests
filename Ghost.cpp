@@ -1,17 +1,17 @@
 #include "Ghost.hpp"
 
-Ghost::Ghost(double Hth, double Atk, double PDef, double Mdef){
+Ghost::Ghost(int Hth, int Atk, int PDef, int MDef){
         maxHealth = Hth;
         attack = Atk;
-        physicalDef = Pdef;
-        magicalDef = Mdef;
+        physicalDef = static_cast<int>(2 * PDef);
+        magicalDef = static_cast<int>(0.5 * MDef);
 }
 
 Ghost::~Ghost(){
 	delete this;
 }
 
-double Ghost::monsterHit(){
+int Ghost::monsterHit(){
         return static_cast<int>(attack*1.1);
 }
 
@@ -35,7 +35,7 @@ int Ghost::getMaxHealth(){
 	return this->maxHealth;
 }
 
-int  Ghost::getAtk(){
+int  Ghost::getAttack(){
 	return this->attack;
 }
 
