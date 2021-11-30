@@ -22,7 +22,6 @@ TEST(DwarfTest, getAtk_Test){
 }
 
 TEST(DwarfTest, getMagicalDef_Test){
-	DwarTEST(DwarfTest, getMagicalDef_Test){
         Dwarf* DwarfTest = new Dwarf():
 	DwarfTest->setMagicalDef(20);
 	EXPECT_EQ(DwarfTest->getMagicalDef(),20);
