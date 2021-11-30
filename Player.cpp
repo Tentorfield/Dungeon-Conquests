@@ -1,54 +1,45 @@
-#ifndef __PLAYER_HPP__
-#define __PLAYER_HPP__
+#include "Player.hpp"
 
-#include <iostream>
-#include <string>
-#include "stats/Stat.cpp"
-#include <cmath>
-using namespace std;
 
-class Player{
-	protected:
-		string name;
-		//Monster *Monster;
-		int level;
-		int expPoints;
-		//int maxHealth;
-		//int currentHealth;
-		Stat* Stats;
-		// no need for a local copy of player stats
-		// when you want defense for example, just call Stats->getDefense();
-		
-		int freePoints;
-		int currentHealth;
-		
-	public:
-		Player(){ };
-		Player(string _name, double _health): name(_name), health(_health){}; 
-		void setExp(int _exp){
-			expPoints = _exp;
-		}
-		int getExp(){
-			return exp;
-		}
-		void setLevel(int _level){
-			level = _level;
-		}
-		int getLevel(){
-			return level;
-		}
-		
-		void setCurrentHealth(int val){
-			currentHealth = val;
+		Player::Player(){
+			this->name = "";
+			this->expPoints = 0;
+			this->level = 1;
+			this->expPoints = 0;
+			this->freePoints = 0;
+			this->Stats = new Stat();
 		}
 
-		void getCurrentHealth(){
-			return this->currentHealth;
+		/*Player::Player(string _name, int _health, int _level, int _expPoints, int _freePoints): name(_name), health(_health), level(_level), expPoints(_expPoints), freePoints(_freePoints){}; 
+*/		
+		void Player::setExp(int _exp){
+			this->expPoints = _exp;
 		}
-	
-		void nextLevel(int _level){
-			level = _level;
-			if (Monster->isEliminate){
+
+		int Player::getExp(){
+			return this->expPoints;
+		}
+		void Player::setLevel(int _level){
+			this->level = _level;
+		}
+		int Player::getLevel(){
+			return this->level;
+		}
+	//	void setHealth(int _health){
+	//		health = _health;
+	//	}
+		int  Player::getMaxHealth(){
+			return Stats->getMaxHealth();
+		}
+		void Player::setName(string _name){
+			this->name = _name;
+		}
+		string Player::getName(){
+			return this->name;
+		}
+		void Player::nextLevel(){
+			static const int exp_cap[] = {0, 500, 1000, 3000, 6000, 10000, 15000, 21000, 30000, 50000, 80000, 100000, 999999};
+			while (expPoints >= exp_cap[level]){
 				expPoints =  500 * pow(level, 2) - (500 * level);
 				level++;
 				freePoints += 10;
@@ -58,7 +49,7 @@ class Player{
 			}
 		}
 
-		string distributePoints() { 
+		string Player::distributePoints() { 
 			int bodyAllocation, mindAllocation, spiritAllocation;
 			cout << "How many points would you like to invest in Body? ";
 			cin >> bodyAllocation;	
@@ -75,12 +66,10 @@ class Player{
 			Stats->allocatePoints(bodyAllocation, mindAllocation, spiritAllocation);
 			return "Stats successfully allocated. See new stats? (y/n) ";
 		}
-		
-		void displayPlayerStats() {
+
+		void Player::displayPlayerStats() {
 			cout << "\n________________\n" << "Body: " << Stats->getBody() << "\nMind: " << Stats->getMind()<< "\nSpirit: " << Stats->getSpirit()
 			<< "\nPhysicalAttack Damage: " << Stats->getPhysicalAtk()<< "\nMagicalAttack Damage: " << Stats->getMagicAtk() 
 			<< "\nDefense: " << Stats->getDefense() << "\nMax Health: " << Stats->getMaxHealth() << "\n_______________" << endl;
 		}
 
-};
-#endif 

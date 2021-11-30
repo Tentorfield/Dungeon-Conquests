@@ -1,5 +1,6 @@
 
-#include "Player.hpp"
+//#include "Player.hpp"
+#include "Player.cpp"
 #include "MonsterFactory.cpp"
 #include <ostream>
 
