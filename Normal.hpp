@@ -16,7 +16,7 @@ class Normal : public Monster {
 		int getMagicalDef();
 		int getPhysicalDef();
 		int monsterHit();
-
+		string monsterType();
 };
 
 #endif

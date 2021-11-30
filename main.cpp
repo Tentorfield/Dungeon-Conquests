@@ -11,7 +11,7 @@ void introduction(Player* &player) {
 	cin >> input;
 	if (input == 'y' || input == 'Y') { 
 	    cout << "Great, let's get you started. Dungeon Conquest is a game about adventure and slaying monsters." 
-		 << "\nFollow the directions for inputs for each of your character actions. Press 'q' at any time to instantly quit the game. " << endl;
+		 << "\nFollow the directions for inputs for each of your character actions. Play to your heart's content! " << endl;
 	}
 	cout << "What is your name, traveler?" << endl;
 	string name;
@@ -24,7 +24,7 @@ void introduction(Player* &player) {
 
 // a fight method outline that (hopefully) can be used for every enemy the player encounters
 void fight(Player* &player, Monster* monster, bool &endOfGame) { 
-	cout << "You encounter a monster!" << endl;
+	cout << "You encounter a " << monster->monsterType() << "!" << endl;
 	int option = 0;
 	int mHth = monster->getMaxHealth();
 	cout << "The monster's health is at " << mHth << endl << "Your player's health is at " << player->getCurrentHealth() << endl;
@@ -33,9 +33,10 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 	    cin >> option;
 	    if (option == 1) { 
 		//monster->displayStats();
+		cout << "MONSTER TYPE: " <<  monster->monsterType() << endl;
 		cout << "ATTACK:" << monster->getAttack() << endl;
-		cout << "MAGICAL DEF:" << monster->getMagicalDef() << endl;
-		cout << "PHYSICAL DEF:" << monster->getPhysicalDef() << endl;
+		cout << "MAGICAL DEF: " << monster->getMagicalDef() << endl;
+		cout << "PHYSICAL DEF: " << monster->getPhysicalDef() << endl;
 	    }
 	    else if (option == 2) {
 		int damage = player->Stats->getPhysicalAtk() - monster->getPhysicalDef();
@@ -67,7 +68,7 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 	    }
 	}
 	if (mHth <= 0) { 
-	    	cout << "You have defeated the monster!" << endl;
+	    	cout << "You have defeated the " << monster->monsterType() << "!" << endl;
 		player->nextLevel();
 	    // function for exp allocation is called
 	    return;
@@ -107,6 +108,9 @@ int main(){
 				factory  = new MonsterFactory(floor);
 				delete tmp;
 				cout << "You've reached a staircase and have entered a new floor!" << endl;
+				player->setCurrentHealth(player->getMaxHealth());
+                                cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;
+
 			}	
 		}
 	        
@@ -129,6 +133,8 @@ int main(){
                                 factory  = new MonsterFactory(floor);
                                 delete tmp;
 				cout << "You've reached a staircase and have entered a new floor!" << endl;
+				player->setCurrentHealth(player->getMaxHealth());
+				cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;  
                         }
                 }
 
@@ -150,6 +156,9 @@ int main(){
                                 factory  = new MonsterFactory(floor);
                                 delete tmp;
 				cout << "You've reached a staircase and have entered a new floor!" << endl;
+				player->setCurrentHealth(player->getMaxHealth());
+                                cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;
+
                         }
                 }
 

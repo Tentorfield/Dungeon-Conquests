@@ -13,7 +13,7 @@ Normal::~Normal(){
 }
 
 int Normal::monsterHit(){
-	return static_cast<int>(attack*1.1);
+	return static_cast<int>(.55 * (attack + ((rand() % attack))));
 }
 
 void Normal::setAttack(int val){
@@ -46,5 +46,11 @@ int Normal::getMagicalDef(){
 
 int Normal::getPhysicalDef(){
 	return this->physicalDef;
+}
+
+
+string Normal::monsterType() {
+	string type = "Normal Monster";
+	return type;
 }
 
