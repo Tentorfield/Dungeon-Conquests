@@ -40,7 +40,7 @@
 		void Player::nextLevel(){
 			static const int exp_cap[] = {0, 500, 1000, 3000, 6000, 10000, 15000, 21000, 30000, 50000, 80000, 100000, 999999};
 			while (expPoints >= exp_cap[level]){
-				expPoints =  500 * pow(level, 2) - (500 * level);
+				expPoints +=  500 * pow(level, 2) - (500 * level);
 				level++;
 				freePoints += 10;
 				// freePoints are gained on level up. 
