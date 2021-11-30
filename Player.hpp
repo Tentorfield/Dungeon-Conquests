@@ -24,6 +24,7 @@ class Player{
 
 	public:
 		Stat* Stats;
+		~Player();
 		Player();
 	//	Player(string _name, int _currenthealth, int _maxHealth int _level, int _expPoints, int _freePoints);
 		void setName(string _name);

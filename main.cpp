@@ -43,29 +43,37 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
         	cout << endl << "--------------------------------------------------" << endl;
 	    }
 	    else if (option == 2) {
-		int damage = player->Stats->getPhysicalAtk() - monster->getPhysicalDef();
+		int damage = (player->Stats->getPhysicalAtk() + rand() % player->getLevel())- monster->getPhysicalDef();
 		if (damage < 0){
 			damage = 0;
 		} 
 		cout << endl << "--------------------------------------------------" << endl;
 		cout << "You attack the monster and deal " << damage << " damage!" << endl;
 		mHth -= damage;
-		cout << "The monster counter-attacked! You took " << monster->monsterHit() << " damage." << endl; 
-		player->setCurrentHealth(player->getCurrentHealth() - monster->monsterHit());
+		int dmg = monster->monsterHit() - player->Stats->getDefense();
+		if (dmg < 0){
+			dmg = 0;
+		}
+		cout << "The monster counter-attacked! You took " << dmg << " damage." << endl; 
+		player->setCurrentHealth(player->getCurrentHealth() - dmg);
 		cout << "Monster Health : " << mHth << endl;
 		cout << "Player Health : " << player->getCurrentHealth();	
 		cout << endl << "--------------------------------------------------" << endl;
 	    }
 	    else if (option == 3) {	 
-		int damage = player->Stats->getMagicAtk() - monster->getMagicalDef();
+		int damage = (player->Stats->getMagicAtk() + rand() % player->getLevel())- monster->getMagicalDef();
 		if (damage < 0){
 			damage = 0;
 		}
 		cout << endl << "--------------------------------------------------" << endl; 
 		cout << "You attack the monster and deal " << damage << " damage!" << endl;
                 mHth -= damage;
-                cout << "The monster counter-attacked! You took " << monster->monsterHit() << " damage." << endl;
-                player->setCurrentHealth(player->getCurrentHealth() - monster->monsterHit());
+		int dmg = monster->monsterHit() - player->Stats->getDefense();
+		if (dmg < 0){
+			dmg = 0;
+		} 
+                cout << "The monster counter-attacked! You took " << dmg << " damage." << endl;
+                player->setCurrentHealth(player->getCurrentHealth() - dmg);
                 cout << "Monster Health : " << mHth << endl;
                 cout << "Player Health : " << player->getCurrentHealth();
 		cout << endl << "--------------------------------------------------" << endl;

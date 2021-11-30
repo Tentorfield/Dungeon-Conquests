@@ -11,6 +11,10 @@
 			this->currentHealth = getMaxHealth();
 		}
 		
+		Player::~Player(){
+			delete Stats;
+			delete this;
+		}
 		void Player::setExp(int _exp){
 			this->expPoints = _exp;
 		}

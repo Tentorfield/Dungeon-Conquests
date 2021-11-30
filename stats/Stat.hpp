@@ -9,7 +9,7 @@ class Stat {
         Stat();
 	Stat(int baseAttack, int baseHealth);
 	void allocatePoints(int body, int mind, int spirit);
-
+	~Stat();
 	double getBody();
 	double getMind();
 	double getSpirit();
