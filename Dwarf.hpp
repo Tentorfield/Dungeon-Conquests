@@ -4,11 +4,8 @@
 
 class Dwarf : Monster {
 	Public:
-		Dwarf(double Hth, double Atk, double PDef, double Mdef);
-		double monsterHit();
-
-
-
+		Dwarf(int Hth, int Atk, int PDef, int Mdef);
+		int monsterHit();
 }
 
 

@@ -1,6 +1,6 @@
 #include "Dwarf.hpp"
 
-Dwarf::Dwarf(double Hth, double Atk, double PDef, double Mdef){
+Dwarf::Dwarf(int Hth, int Atk, int PDef, int Mdef){
 	maxHealth = Hth;
 	attack = Atk;
 	physicalDef = Pdef;
@@ -11,8 +11,8 @@ Dwarf::~Dwarf(){
 	delete this;
 }
 
-double Dwarf::MonsterHit(){
-	return attack*1.1;
+int Dwarf::MonsterHit(){
+	return static_cast<int>attack*1.1;
 }
 
 

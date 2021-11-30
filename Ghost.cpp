@@ -12,7 +12,7 @@ Ghost::~Ghost(){
 }
 
 double Ghost::monsterHit(){
-        return attack*1.1;
+        return static_cast<int>(attack*1.1);
 }
 
 

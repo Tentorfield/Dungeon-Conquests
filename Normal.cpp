@@ -1,6 +1,6 @@
 #include "Normal.hpp"
 
-Normal::Normal(double Hth, double Atk, double PDef, double Mdef){
+Normal::Normal(int Hth, int Atk, int PDef, int Mdef){
         Health = Hth;
         Attack = Atk;
         PhysicalDef = Pdef;
@@ -11,7 +11,7 @@ Normal::~Normal(){
         delete this;
 }
         
-double Normal::monsterHit(){
-        return attack*1.1;
+int Normal::monsterHit(){
+        return static_cast<int>(attack*1.1);
 }
 
