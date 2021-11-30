@@ -10,9 +10,7 @@
 			this->Stats = new Stat();
 			this->currentHealth = getMaxHealth();
 		}
-
-		/*Player::Player(string _name, int _health, int _level, int _expPoints, int _freePoints): name(_name), health(_health), level(_level), expPoints(_expPoints), freePoints(_freePoints){}; 
-*/		
+		
 		void Player::setExp(int _exp){
 			this->expPoints = _exp;
 		}
@@ -26,9 +24,6 @@
 		int Player::getLevel(){
 			return this->level;
 		}
-	//	void setHealth(int _health){
-	//		health = _health;
-	//	}
 		int  Player::getMaxHealth(){
 			return Stats->getMaxHealth();
 		}
@@ -46,41 +41,39 @@
 		}
 		void Player::nextLevel(){
 			static const int exp_cap[] = {0 ,0, 500, 1000, 3000, 6000, 10000, 15000, 21000, 30000, 50000, 80000, 100000, 999999};
-			cout << "EXP CAP: " << exp_cap[level] << endl;
-			cout << "CURRENT LEVEL: " << level << endl;
-			cout << "CURRENT EXP: " << expPoints << endl;
 			expPoints += 250 * level;
+			cout << "EXP EARNED / EXP CAP: " << expPoints  << " / " << exp_cap[level] << endl;
+			cout << "CURRENT LEVEL: " << level << endl;
+
 			while (expPoints >= exp_cap[level]){
-				//expPoints +=  500 * pow(level, 2) - (500 * level);
-				cout << "Current EXP points: " << expPoints << endl;
+				cout << endl << "--------------------------------------------------" << endl;
 				level++;
 				freePoints += 10;
-				// freePoints are gained on level up. 
-				// The player can raise their stats by allocating points with 
-				// Stats->allocatePoints(int bodyAllocation, int mindAllocation, int spiritAllocation);
 				cout << "LEVEL UP!" << endl;
-				cout << "Current Level: " << level << endl;
-				cout << "10 stat point gained! Distribute them wisely :)" << endl;
-				this->distributePoints(); 
+				cout << "CURRENT LEVEL: " << level << endl;
+				cout << freePoints << " Stat points available for allocation! Distribute them through Body, Mind and Spirit. Choose wisely!" << endl;
+				cout << this->distributePoints() << "\nNew Stats"; 
+				this->displayPlayerStats();
 			}
 		}
 
 		string Player::distributePoints() { 
 			int bodyAllocation, mindAllocation, spiritAllocation;
-			cout << "How many points would you like to invest in Body? ";
-			cin >> bodyAllocation;	
-			cout << "\nHow many points would you like to invest in Mind? ";
-			cin >> mindAllocation;
-			cout << "\nHow many points would you like to invest in Spirit? ";
-			cin >> spiritAllocation;
-			cout << endl;
-
-			if ( freePoints < (bodyAllocation + mindAllocation + spiritAllocation) ) {
-				return "insufficient free points";
+			while ( freePoints < (bodyAllocation + mindAllocation + spiritAllocation)){
+				cout << "How many points would you like to invest in Body? ";
+				cin >> bodyAllocation;	
+				cout << "\nHow many points would you like to invest in Mind? ";
+				cin >> mindAllocation;
+				cout << "\nHow many points would you like to invest in Spirit? ";
+				cin >> spiritAllocation;
+				cout << endl;
+                        	if ( freePoints < (bodyAllocation + mindAllocation + spiritAllocation) ) {
+                                	cout <<  "Insufficient free points! Try Again" << endl;
+                        	}
 			}
-
-			Stats->allocatePoints(bodyAllocation, mindAllocation, spiritAllocation);
-			return "Stats successfully allocated. See new stats? (y/n) ";
+			freePoints -= bodyAllocation + mindAllocation + spiritAllocation;
+			Stats->allocatePoints(bodyAllocation, mindAllocation, spiritAllocation);	
+			return "Stats successfully allocated.";
 		}
 
 		void Player::displayPlayerStats() {
