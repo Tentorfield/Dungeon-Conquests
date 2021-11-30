@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "stats/Stat.cpp"
+#include "MonsterFactory.cpp"
 #include <cmath>
 using namespace std;
 
@@ -18,9 +19,10 @@ class Player{
 		Stat* Stats;
 		// no need for a local copy of player stats
 		// when you want defense for example, just call Stats->getDefense();
-		
+
 		int freePoints;
-		
+		int currentHealth;
+
 	public:
 		Player();
 	//	Player(string _name, int _currenthealth, int _maxHealth int _level, int _expPoints, int _freePoints);
@@ -30,20 +32,13 @@ class Player{
 		int getExp();
 		void setLevel(int _level);
 		int getLevel();
+		void setCurrentHealth(int _currentHealth);
+		int getCurrentHealth();
 	//	void setHealth(int _health);
 		int getMaxHealth();
-		
+
 		void setPoints(int _freePoints);
 		int getPoints();
 		void nextLevel();
-
-		string distributePoints();
-
-		void displayPlayerStats();
-
-		//virtual void specialHit() = 0;
-		
-		// when you want attack, just call Stats->getPhysicalAtk or Stats->getMagicAtk
-
 };
-#endif 
+#endif

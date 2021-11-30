@@ -1,20 +1,19 @@
 #ifndef __MONSTER_HPP__
 #define __MONSTER_HPP__
 
-#include "MonsterFactory.hpp"
-
 class Monster{
 	public:
 		// note from Harrison: please use camelCase for function and variable names (first letter undercase) as per naming conventions.
-		void setAttack(int val){};
-		void setPhysicalDef(int val);
-		void setMagicalDef(int val);
-		void setMaxHealth(int val);
-		int getAttack();
-		int getMagicalDef();
-		int getPhysicalDef();
+		virtual void setAttack(int val) = 0;
+		virtual void setPhysicalDef(int val) = 0;
+		virtual void setMagicalDef(int val) = 0;
+		virtual void setMaxHealth(int val) = 0;
+		virtual void getMaxHealth() = 0;
+		virtual int getAttack() = 0;
+		virtual int getMagicalDef() = 0;
+		virtual int getPhysicalDef() = 0;
 		virtual int monsterHit() = 0;
-	private:
+	protected:
 		int maxHealth;
 		int attack;
 		int physicalDef;
