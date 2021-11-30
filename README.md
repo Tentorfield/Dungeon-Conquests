@@ -25,13 +25,6 @@
 
 * Overall, the two design patterns help us plan for our game in a more organized matter. In a sense, the composite pattern made the workflow alot easier when coding player-sided perspective. This is because composite pattern made the connections of many components comprehenable. This way, we are able to easily structure groups like the Player and Stats class as a whole. For Monster Class, using strategy pattern ended up being the right decision because we want the complexities derived from Monster Class to be simplified for the client or interface. Also, since the characteristics of the three types of monsters (Dwarfs, Ghost, Normal) are monotonal, we are able to use strategy pattern to increased the consistency among the three monster sub-classes.   
 
-> During the meeting with your TA you will discuss: 
- > * How effective your last sprint was (each member should talk about what they did)
- > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- > * What tasks you are planning for this next sprint.
-
- 
  > ## Final deliverable
  > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
  > Before the demo, you should do the following:
@@ -42,7 +35,7 @@
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+Type "g++ main.cpp" and type "./a.out"
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+The project is validated using googletest and continuous integration (CI). 
  
