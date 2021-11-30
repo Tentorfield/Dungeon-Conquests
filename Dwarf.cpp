@@ -1,20 +1,18 @@
 #include "Dwarf.hpp"
 
-Dwarf::Dwarf(double Hth, double Atk, double PDef, double Mdef, double MdefMult, double PDefMult ){
-	Health = Hth;
-	Attack = Atk;
-	PhysicalDef = Pdef;
-	MagicalDef = Mdef;
-	MagicalDefMult = MdefMult;
-	PhysicalDefMult = PDefMult;
+Dwarf::Dwarf(double Hth, double Atk, double PDef, double Mdef){
+	maxHealth = Hth;
+	attack = Atk;
+	physicalDef = Pdef;
+	magicalDef = Mdef;
 }
 
 Dwarf::~Dwarf(){
-	//implement
+	delete this;
 }
 
 double Dwarf::MonsterHit(){
-	return Atk*1.1;
+	return attack*1.1;
 }
 
 

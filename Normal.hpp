@@ -4,8 +4,8 @@
 
 class Normal : Monster {
         Public:
-                Normal(double Hth, double Atk, double PDef, double Mdef, double MdefMult, double PDefMult );
-                double MonsterHit();
+                Normal(double Hth, double Atk, double PDef, double Mdef);
+                double monsterHit();
 
 
 

@@ -1,20 +1,18 @@
 #include "Ghost.hpp"
 
-Ghost::Ghost(double Hth, double Atk, double PDef, double Mdef, double MdefMult, double PDefMult ){
-        Health = Hth;
-        Attack = Atk;
-        PhysicalDef = Pdef;
-        MagicalDef = Mdef;
-        MagicalDefMult = MdefMult;
-        PhysicalDefMult = PDefMult;
+Ghost::Ghost(double Hth, double Atk, double PDef, double Mdef){
+        maxHealth = Hth;
+        attack = Atk;
+        physicalDef = Pdef;
+        magicalDef = Mdef;
 }
 
 Ghost::~Ghost(){
-	//implement
+	delete this;
 }
 
-double Ghost::MonsterHit(){
-        return Atk*1.1;
+double Ghost::monsterHit(){
+        return attack*1.1;
 }
 
 

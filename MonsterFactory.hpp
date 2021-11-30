@@ -12,7 +12,7 @@ class MonsterFactory {
 	MonsterFactory(int floor);
 	
 	// generates a monster with stats based off the floor the player is on 
-	Monster* GetMonster();
+	Monster* getMonster();
 		
     private: 
 	Monster* randomMonster;
