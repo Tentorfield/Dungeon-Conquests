@@ -1,7 +1,7 @@
 #ifndef __PLAYER__TEST__HPP__
 #define __PLAYER__TEST__HPP__
 #include "gtest/gtest.h"
-#include "Player.cpp"
+#include "testIncludeFile.hpp"
 
 TEST(PlayerTest, getExp_Test){
 	Player* PlayerTest = new Player();
@@ -17,13 +17,13 @@ TEST(PlayerTest, getLevel_Test){
 
 TEST(PlayerTest, getMaxHealth_Test){
 	Player* PlayerTest = new Player();
-	EXPECT_EQ(PlayerTest->getMaxHealth(),150);
+	EXPECT_EQ(PlayerTest->getMaxHealth(),100);
 }
 
 TEST(PlayerTest, getName_Test){
 	Player* PlayerTest = new Player();
-	PlayerTest->setName(lucky);
-	EXPECT_EQ(PlayerTest->getName(),lucky);
+	PlayerTest->setName("lucky");
+	EXPECT_EQ(PlayerTest->getName(),"lucky");
 }
 
 TEST(PlayerTest, getCurrentHealth_Test){

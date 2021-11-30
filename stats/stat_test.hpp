@@ -2,7 +2,7 @@
 #define __STAT_TEST_HPP__
 
 #include "gtest/gtest.h"
-#include "Stat.cpp"
+#include "../testIncludeFile.hpp"
 
 TEST(StatTest, constructorTest){
     Stat* statTest1 = new Stat();
