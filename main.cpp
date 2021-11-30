@@ -31,7 +31,7 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 	cout << "The monster's health is at " << mHth << endl << "Your player's health is at " << player->getCurrentHealth() << endl;
 	cout << endl << "--------------------------------------------------" << endl;
 	while( (mHth > 0) && (player->getCurrentHealth() > 0) ){ 
-	    cout << "Choose an option: Inspect(1), Physical Attack(2), Magical Attack(3)" << endl;
+	    cout << "Choose an option: Inspect(1), Physical Attack(2), Magical Attack(3), Player's Stats(4)" << endl;
 	    cin >> option;
 	    if (option == 1) { 
 		cout << endl << "--------------------------------------------------" << endl;
@@ -78,6 +78,12 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
                 cout << "Player Health : " << player->getCurrentHealth();
 		cout << endl << "--------------------------------------------------" << endl;
 	    }
+            else if (option == 4){
+                cout << player->getName() << "'s stats: ";
+                player->displayPlayerStats();
+		cout << "The monster's health is at " << mHth << endl << "Your player's health is at " << player->getCurrentHealth();
+                cout << endl << "--------------------------------------------------" << endl;
+            }
 	    else {
 		cout << "Invalid input, please try again." << endl;
 	    }

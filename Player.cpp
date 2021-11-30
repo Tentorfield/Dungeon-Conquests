@@ -81,7 +81,7 @@
 		}
 
 		void Player::displayPlayerStats() {
-			cout << "\n________________\n" << "Body: " << Stats->getBody() << "\nMind: " << Stats->getMind()<< "\nSpirit: " << Stats->getSpirit()
+			cout << "\n________________\n" << "Level: " << this->getLevel() << "\nBody: " << Stats->getBody() << "\nMind: " << Stats->getMind()<< "\nSpirit: " << Stats->getSpirit()
 			<< "\nPhysicalAttack Damage: " << Stats->getPhysicalAtk()<< "\nMagicalAttack Damage: " << Stats->getMagicAtk() 
 			<< "\nDefense: " << Stats->getDefense() << "\nHealth: " << currentHealth << " / " <<  Stats->getMaxHealth() << "\n_______________" << endl;
 		}
