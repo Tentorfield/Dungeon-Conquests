@@ -45,14 +45,22 @@
 			return this->currentHealth;
 		}
 		void Player::nextLevel(){
-			static const int exp_cap[] = {0, 500, 1000, 3000, 6000, 10000, 15000, 21000, 30000, 50000, 80000, 100000, 999999};
+			static const int exp_cap[] = {0 ,0, 500, 1000, 3000, 6000, 10000, 15000, 21000, 30000, 50000, 80000, 100000, 999999};
+			cout << "EXP CAP: " << exp_cap[level] << endl;
+			cout << "CURRENT LEVEL: " << level << endl;
+			cout << "CURRENT EXP: " << expPoints << endl;
 			while (expPoints >= exp_cap[level]){
 				expPoints +=  500 * pow(level, 2) - (500 * level);
+				cout << "Current EXP points: " << expPoints << endl;
 				level++;
 				freePoints += 10;
 				// freePoints are gained on level up. 
 				// The player can raise their stats by allocating points with 
-				// Stats->allocatePoints(int bodyAllocation, int mindAllocation, int spiritAllocation); 
+				// Stats->allocatePoints(int bodyAllocation, int mindAllocation, int spiritAllocation);
+				cout << "LEVEL UP!" << endl;
+				cout << "Current Level: " << level << endl;
+				cout << "10 stat point gained! Distribute them wisely :)" << endl;
+				this->distributePoints(); 
 			}
 		}
 

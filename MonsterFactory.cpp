@@ -36,10 +36,10 @@
 */
 
 		int monsterType = rand() % 3;
-		int normAtk = rand() % (10 * difficulty) + (difficulty * difficulty);
-		int  normPDef = rand() % (10 * difficulty) + (difficulty);
-		int  normMDef = rand() % (10 * difficulty) + (difficulty);
-                int  normHth = 10 * rand() % (10 * difficulty) + (difficulty * difficulty);
+		int normAtk = rand() % (5 * difficulty) + (difficulty * difficulty);
+		int  normPDef = rand() % (5 * difficulty) + (difficulty);
+		int  normMDef = rand() % (5 * difficulty) + (difficulty);
+                int  normHth = 10 *( rand() % (5 * difficulty) + (difficulty * difficulty));
 
 		if (monsterType = 0){
 		//Normal Monster
