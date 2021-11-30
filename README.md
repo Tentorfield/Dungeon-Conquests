@@ -35,7 +35,7 @@
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
-On your terminal, type "g++ main.cpp" and type "./a.out"
+On your terminal, type and enter "g++ main.cpp". Finally, type "./a.out" and press enter.
  ## Testing
 The project is validated using googletest and continuous integration (CI). 
  
