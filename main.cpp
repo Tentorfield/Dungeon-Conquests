@@ -1,50 +1,70 @@
 
-//#include "Player.hpp"
-#include "Player.cpp"
+#include "Player.hpp"
 #include "MonsterFactory.cpp"
-#include <ostream>
+#include <iostream>
 
 using namespace std;
 
-void introduction() { 
-	cout << "Welcome to Dungeon Conquest! Would you like to know how to play? (y/n)" << endl;
+void introduction(Player* player) { 
+	cout << "Welcome to Dungeon Conquest! Would you like to know how to play? Press 'Y/y' if so." << endl;
 	char input;
 	cin >> input;
-	if (input == 'y') { 
-	    cout << "Great, let's get you started. Dungeon Conquest is a game about [insert description here]." 
-		 << "\nHere are some useful tips. Press 'q' at any time to instantly quit the game. [More tips]. " << endl;
+	if (input == 'y' || input == 'Y') { 
+	    cout << "Great, let's get you started. Dungeon Conquest is a game about adventure and slaying monsters." 
+		 << "\nFollow the directions for inputs for each of your character actions. Press 'q' at any time to instantly quit the game. " << endl;
 	}
+	cout << "What is your name, traveler?" << endl;
+	string name;
+	getline(cin, name);
+	player.setName(name);
+	cout << "Welcome, " << name << " you have just entered the dungeon!" << endl;
+	return;
 }
 
 // a fight method outline that (hopefully) can be used for every enemy the player encounters
-void fight(Player* player, Monster* monster) { 
-	cout << "You encounter a [class] monster!" << endl;
+void fight(Player* &player, Monster* monster, bool &endOfGame) { 
+	cout << "You encounter a monster!" << endl;
 	int option = 0;
-	while( (monster->getCurrentHP > 0) && (player->getCurrentHP > 0) ) { 
+	int mHth = monster->getMaxHealth;
+	while( (mHth > 0) && (player->getCurrentHealth() > 0) ){ 
 	    cout << "Choose an option: Inspect(1), Physical Attack(2), Magical Attack(3)" << endl;
 	    cin >> option;
 	    if (option == 1) { 
-		monster->displayStats();
+		//monster->displayStats();
+		cout << "ATTACK:" << monster->getAtk << endl;
+		cout << "MAGICAL DEF:" << monster->magicalDef << endl;
+		cout << "PHYSICAL DEF:" << monster->PhysicalDef << endl;
 	    }
-	    if (option == 2) { 
-		monster->currentHP -= player->getPhysicalAttack(); 
-		player->takeDamage(monster->getAttack);
+	    else if (option == 2) { 
+		cout << "You attack the monster and deal " << player->Stats->getPhysicalAtk() << " damage!" << endl;
+		mHth -= player->Stats->getPhysicalAtk();
+		cout << "The monster counter-attacked! You took " << monster->monsterHit() << " damage." << endl; 
+		player->setCurrentHealth(player->getCurrentHealth - monster->monsterHit());
+		cout << "Monster Health : " << mHth << endl;
+		cout << "Player Health : " << player->getCurrentHealth() << endl;	
 	    }
-	    if (option == 3) { 
-		monster->currentHP -= player->getMagicalAttack(); 
+	    else if (option == 3) { 
+		cout << "You attack the monster and deal " << player->Stats->getMagicAtk() << " damage!" << endl;
+                mHth -= player->Stats->getMagicAtk();
+                cout << "The monster counter-attacked! You took " << monster->monsterHit() << " damage." << endl;
+                player->setCurrentHealth(player->getCurrentHealth - monster->monsterHit());
+                cout << "Monster Health : " << mHth << endl;
+                cout << "Player Health : " << player->getCurrentHealth() << endl;
+
 	    }
 	    else {
-		cout << "invalid input, please try again" << endl;
+		cout << "Invalid input, please try again." << endl;
 	    }
 	}
-	if (monster->getCurrentHP <= 0) { 
-	    cout << "You have defeated the [class] monster!" << endl;
+	if (mHth <= 0) { 
+	    cout << "You have defeated the  monster!" << endl;
 	    // function for exp allocation is called
 	    return;
 	}
 	else {
 	    cout << "YOU DIED" << endl;
-	    exit(1); // terminate program
+	    endOfGame = true;
+	    return;
 	}
 }
 
@@ -52,32 +72,86 @@ void fight(Player* player, Monster* monster) {
 // this is a general outline of how the interface should be: as small and modular as possible with lots of helper functions
 
 int main(){
-    int option;
-    char input = 0;
+    int  input = 0;
     bool endOfGame = false;
+    int floor = 1;
+ 
+    Player* Player = new Player();	
 
-    while (endOfGame == false) { 
+    introduction(Player);
 
-	introduction();
-
-    	Player* Player = new Player();
-	MonsterFactory* floorOneFactory = new MonsterFactory(1);
-	fight(Player, floorOneFactory->getMonster());	
-
-	while ( (input != 1) && (input != 2) && (input != 3) ) {
+    MonsterFactory* factory = new MonsterFactory(floor);
+    
+    while (endOfGame != true){	
 	    cout << "Where to next? Left door(1), Middle door(2), Right door(3)" << endl; 
 	    cin >> input;
 	    if (input == 1) { 
-	
-	    }
-	    if (input == 2) { 
+		int outcome = rand() % 2;
 
+		if(player->getLevel > MonsterFactory->floor){
+		    int nextFloor = rand() % 2;
+			if (nextFloor == 1){	
+				MonsterFactory* tmp = factory;
+				floor = floor + 1;
+				factory  = new MonsterFactory(floor);
+				delete tmp;
+				cout << "You've reached a staircase and have entered a new floor!" << endl;
+			}	
+		}
+	        
+		if (outcome == 1){
+                   fight(Player, factory->getMonster(), endOfGame);
+                }
+		else (outcome == 2){
+		   cout << "You tread carefully through the corridor..." << endl;
+		}
+
+    	    }
+	    else if (input == 2) { 
+                int outcome = rand() % 2;
+
+                if(player->getLevel > MonsterFactory->floor){
+                    int nextFloor = rand() % 2;
+                        if (nextFloor == 1){
+                                MonsterFactory* tmp = factory;
+                                floor = floor + 1;
+                                factory  = new MonsterFactory(floor);
+                                delete tmp;
+				cout << "You've reached a staircase and have entered a new floor!" << endl;
+                        }
+                }
+
+                if (outcome == 1){
+                   fight(Player, factory->getMonster(), endOfGame);
+                }
+                else (outcome == 2){
+                   cout << "You hear strange sounds echo throughout the dungeon..." << endl;
+                }
 	    }
-	    if (input == 3) { 
+	    else if (input == 3) { 
+                int outcome = rand() % 2;
+
+                if(player->getLevel > MonsterFactory->floor){
+                    int nextFloor = rand() % 2;
+                        if (nextFloor == 1){
+                                MonsterFactory* tmp = factory;
+                                floor = floor + 1;
+                                factory  = new MonsterFactory(floor);
+                                delete tmp;
+				cout << "You've reached a staircase and have entered a new floor!" << endl;
+                        }
+                }
+
+                if (outcome == 1){
+                   fight(Player, factory->getMonster(), endOfGame);
+                }
+                else (outcome == 2){
+                   cout << "You tread carefully through the corridor..." << endl;
+                }
 
 	    }
 	    else { 
-	        cout << "invalid input" << endl;
+	        cout << "Invalid input" << endl;
 	    }
 	}
 

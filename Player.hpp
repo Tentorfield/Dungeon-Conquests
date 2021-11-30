@@ -1,20 +1,19 @@
-#ifndef __PLAYER_HPP__
-#define __PLAYER_HPP__
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 
 #include <iostream>
 #include <string>
 #include "stats/Stat.cpp"
-#include <cmath>
+
 using namespace std;
 
 class Player{
-	protected:
+	private:
 		string name;
-		//Monster *Monster;
+		Monster *Monster;
 		int level;
 		int expPoints;
-		//int maxHealth;
-		//int currentHealth;
+		
 		Stat* Stats;
 		// no need for a local copy of player stats
 		// when you want defense for example, just call Stats->getDefense();
@@ -81,6 +80,10 @@ class Player{
 			<< "\nPhysicalAttack Damage: " << Stats->getPhysicalAtk()<< "\nMagicalAttack Damage: " << Stats->getMagicAtk() 
 			<< "\nDefense: " << Stats->getDefense() << "\nMax Health: " << Stats->getMaxHealth() << "\n_______________" << endl;
 		}
+
+		//virtual void specialHit() = 0;
+		
+		// when you want attack, just call Stats->getPhysicalAtk or Stats->getMagicAtk
 
 };
 #endif 
