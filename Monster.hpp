@@ -10,6 +10,7 @@ class Monster{
 		void setPhysicalDef(int val);
 		void setMagicalDef(int val);
 		void setMaxHealth(int val);
+		void getMaxHealth();
 		int getAttack();
 		int getMagicalDef();
 		int getPhysicalDef();

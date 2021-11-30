@@ -19,6 +19,7 @@ class Player{
 		// when you want defense for example, just call Stats->getDefense();
 		
 		int freePoints;
+		int currentHealth;
 		
 	public:
 		Player(){ };
@@ -35,6 +36,15 @@ class Player{
 		int getLevel(){
 			return level;
 		}
+		
+		void setCurrentHealth(int val){
+			currentHealth = val;
+		}
+
+		void getCurrentHealth(){
+			return this->currentHealth;
+		}
+	
 		void nextLevel(int _level){
 			level = _level;
 			if (Monster->isEliminate){
@@ -64,7 +74,7 @@ class Player{
 			Stats->allocatePoints(bodyAllocation, mindAllocation, spiritAllocation);
 			return "Stats successfully allocated. See new stats? (y/n) ";
 		}
-
+		
 		void displayPlayerStats() {
 			cout << "\n________________\n" << "Body: " << Stats->getBody() << "\nMind: " << Stats->getMind()<< "\nSpirit: " << Stats->getSpirit()
 			<< "\nPhysicalAttack Damage: " << Stats->getPhysicalAtk()<< "\nMagicalAttack Damage: " << Stats->getMagicAtk() 

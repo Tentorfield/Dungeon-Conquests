@@ -19,6 +19,10 @@ void Monster::setMagicalDef(int val){
 	this->magicalDef = val;
 }
 
+int Monster::getMaxHealth(){
+	return this->maxHealth;
+}
+
 int  Monster::getAtk(){
 	return this->attack;
 }
