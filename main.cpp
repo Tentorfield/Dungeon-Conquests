@@ -3,7 +3,7 @@
 #include "Chest.hpp" // ADDED`
 //#include "MonsterFactory.hppi"
 #include <iostream>
-
+#include <cstdlib>
 using namespace std;
 
 void introduction(Player* &player) { 
@@ -13,7 +13,7 @@ void introduction(Player* &player) {
 	if (input == 'y' || input == 'Y') { 
 	    cout << "\nGreat, let's get you started. Dungeon Conquest is a game about adventure and slaying monsters." 
 		 << "\nFollow the directions for inputs for each of your character actions. Play to your heart's content! " << endl;
-	}
+
 	cout << "What is your name, traveler?" << endl;
 	string name;
 	cin.ignore();
@@ -21,7 +21,10 @@ void introduction(Player* &player) {
 	player->setName(name);
 	cout << endl;
 	cout << "Welcome, " << name << " you have just entered the dungeon!" << endl;
-	return;
+	}
+	else{
+		exit(1);
+	}
 }
 
 // a fight method outline that (hopefully) can be used for every enemy the player encounters
@@ -85,7 +88,7 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 		cout << "The monster's health is at " << mHth << endl << "Your player's health is at " << player->getCurrentHealth();
                 cout << endl << "--------------------------------------------------" << endl;
             }
-	    else {
+	    else if (!(option == 1 || option == 2 || option == 3 || option == 4)){
 		cout << "Invalid input, please try again." << endl;
 	    }
 	}
@@ -104,9 +107,9 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 }
 }
 
-void findChest(Chest* chest, Player* player){
+//void findChest(Chest* chest, Player* player){
 	
-}
+//}
 
 
 // this is a general outline of how the interface should be: as small and modular as possible with lots of helper functions
@@ -148,13 +151,13 @@ int main(){
 				player->setCurrentHealth(player->getMaxHealth());
                                 cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;
 				//ADDED CODE
-				if(floor >= 3){
-				cout <<  "--------------------------------------------------" << endl;
-				cout << "You found a treasure room! The room is trapped so you may only select one Chest. Press "1" for the Physical chest, and "2" for the Magical Chest." << endl;
-				int chestSelect = 0;
-				cin << chestSelect;
-				if (
-				}
+				//if(floor >= 3){
+				//cout <<  "--------------------------------------------------" << endl;
+				//cout << "You found a treasure room! The room is trapped so you may only select one Chest. Press "1" for the Physical chest, and "2" for the Magical Chest." << endl;
+				//int chestSelect = 0;
+				//cin << chestSelect;
+				//if (
+				//}
 			}	
 		}
 	        
