@@ -2,14 +2,15 @@
 #define __MAGIC_CHEST__
 
 #include "Chest.hpp"
+#include "MagicItem.hpp"
 
 class MagicChest : public Chest {
         public:
-                ~Chest(){
+		~MagicChest(){
 			delete this;
 		}
-		
-                Item* itemFinder(){
+                
+		Item* itemFinder(){
 			return new MagicItem();
 		}
 };

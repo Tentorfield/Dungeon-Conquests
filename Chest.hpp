@@ -5,7 +5,6 @@
 
 class Chest {
         public:
-                virtual ~Chest();
 		virtual Item* itemFinder() = 0;
 };
 

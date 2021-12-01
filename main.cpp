@@ -1,6 +1,8 @@
 
 //#include "Player.cpp"
-#include "Chest.hpp" // ADDED`
+#include "Chest.hpp" // ADDED
+#include "MagicChest.hpp"
+#include "PhysicalChest.hpp"
 //#include "MonsterFactory.hppi"
 #include <iostream>
 #include <cstdlib>
@@ -42,8 +44,8 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 		cout << "MONSTER TYPE: " <<  monster->monsterType() << endl;
 		cout << "ATTACK:" << monster->getAttack() << endl;
 		cout << "MAGICAL DEF: " << monster->getMagicalDef() << endl;
-		cout << "PHYSICAL DEF: " << monster->getPhysicalDef() << endl;
-		cout << "The monster's health is at " << mHth << endl << "Your player's health is at " << player->getCurrentHealth();
+		cout << "PHYSICAL DEF: " << monster->getPhysicalDef() << endl << endl;
+		cout << "The monster's health is at " << mHth << endl << endl << "Your player's health is at " << player->getCurrentHealth();
         	cout << endl << "--------------------------------------------------" << endl;
 	    }
 	    else if (option == 2) {
@@ -60,8 +62,14 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 		}
 		cout << "The monster counter-attacked! You took " << dmg << " damage." << endl; 
 		player->setCurrentHealth(player->getCurrentHealth() - dmg);
-		cout << "Monster Health : " << mHth << endl;
-		cout << "Player Health : " << player->getCurrentHealth();	
+                if (mHth < 0){
+                mHth = 0;
+                }
+                if (player->getCurrentHealth() < 0){
+                player->setCurrentHealth(0);
+                }
+		cout << endl << "Monster Health : " << mHth << endl;
+		cout << endl <<  "Player Health : " << player->getCurrentHealth();	
 		cout << endl << "--------------------------------------------------" << endl;
 	    }
 	    else if (option == 3) {	 
@@ -78,21 +86,28 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 		} 
                 cout << "The monster counter-attacked! You took " << dmg << " damage." << endl;
                 player->setCurrentHealth(player->getCurrentHealth() - dmg);
-                cout << "Monster Health : " << mHth << endl;
-                cout << "Player Health : " << player->getCurrentHealth();
+		if (mHth < 0){
+		mHth = 0;
+		}
+		if (player->getCurrentHealth() < 0){
+		player->setCurrentHealth(0);
+		}
+                cout << endl << "Monster Health : " << mHth << endl;
+                cout << endl <<  "Player Health : " << player->getCurrentHealth();
 		cout << endl << "--------------------------------------------------" << endl;
 	    }
             else if (option == 4){
                 cout << player->getName() << "'s stats: ";
                 player->displayPlayerStats();
-		cout << "The monster's health is at " << mHth << endl << "Your player's health is at " << player->getCurrentHealth();
+		cout << endl <<  "The monster's health is at " << mHth << endl << endl << "Your player's health is at " << player->getCurrentHealth();
                 cout << endl << "--------------------------------------------------" << endl;
             }
 	    else if (!(option == 1 || option == 2 || option == 3 || option == 4)){
 		cout << "Invalid input, please try again." << endl;
+		cin >> option;
 	    }
 	}
-	if (mHth <= 0) {
+	if (mHth <= 0 && player->getCurrentHealth() != 0) {
 		cout << endl << "--------------------------------------------------" << endl; 
 	    	cout << "You have defeated the " << monster->monsterType() << "!" << endl;
 		player->nextLevel();
@@ -106,6 +121,34 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 	    return;
 }
 }
+
+void findChest(Chest* chest, Player* player){
+	Item* item = chest->itemFinder();
+	item->printItem(item->getRarity());
+	cout << "Would you like to equip it? Select 'y/Y' or 'n'/N' to choose what to do with your item." << endl;
+	char option;
+	cin >> option;
+	while(option != 'y' && option != 'n' && option != 'Y' && option != 'N'){
+		cout << "Please select 'y/Y' or 'n/N' to choose what to do with your item!" << endl;
+		cin >> option;
+	}
+	if (option == 'y' || option == 'Y'){
+		item->equip(player);
+		delete item;
+                cout << endl << "--------------------------------------------------" << endl;
+		return;
+	}
+	else{
+		delete item;
+		cout << "You left the item and continued through the dungeon." << endl;
+                cout << endl << "--------------------------------------------------" << endl;
+
+		return;
+	}  	
+}
+
+
+// this is a general outline of how the interface should be: as small and modular as possible with lots of helper functions
 
 
 int main(){
@@ -145,6 +188,32 @@ int main(){
 				player->setCurrentHealth(player->getMaxHealth());
                                 cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;
 				//ADDED CODE
+
+				if(floor >= 3){
+				int treasureChance = rand() % 3;
+				if (treasureChance == 0 || treasureChance == 1){
+				cout <<  "--------------------------------------------------" << endl;
+				cout << "You found a treasure room! The room is booby-trapped so you may only select one Chest. Press \"1\" for the Physical chest, and \"2\" for the Magical Chest." << endl;
+				int chestSelect = 0;
+				cin >> chestSelect;
+					while (chestSelect != 1 && chestSelect != 2) {
+                                        	cout << "Invalid input. Please press \"1\" to open the Physical chest, and \"2\" for the Magical Chest." << endl;
+                                        	cin >> chestSelect;
+					}
+					if (chestSelect == 1){
+						cout << endl << "You open the Physical chest!" << endl;
+						Chest* chest = new PhysicalChest();
+						findChest(chest, player);
+						delete chest;	
+					}
+					else {
+						cout << endl << "You open the Magical chest!" << endl;
+						Chest* chest = new MagicChest();
+						findChest(chest, player);
+						delete chest;	
+					}	
+				}
+				}
 			}	
 		}
 	        
@@ -173,6 +242,31 @@ int main(){
 				player->setCurrentHealth(player->getMaxHealth());
 				cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;  
 				//ADDED CODE
+                                if(floor >= 3){
+				int treasureChance = rand() % 3;
+				if (treasureChance == 0 || treasureChance == 1){
+                                cout <<  "--------------------------------------------------" << endl;
+                                cout << "You found a treasure room! The room is booby-trapped so you may only select one Chest. Press \"1\" for the Physical chest, and \"2\" for the Magical Chest." << endl;
+                                int chestSelect = 0;
+                                cin >> chestSelect;
+                                        while (chestSelect != 1 && chestSelect != 2) {
+                                                cout << "Invalid input. Please press \"1\" to open the Physical chest, and \"2\" for the Magical Chest." << endl;
+                                                cin >> chestSelect;
+                                        }
+                                        if (chestSelect == 1){
+                                                cout << endl << "You open the Physical chest!" << endl;
+                                                Chest* chest = new PhysicalChest();
+                                                findChest(chest, player);
+                                                delete chest;
+                                        }
+                                        else {
+                                                cout << endl << "You open the Magical chest!" << endl;
+                                                Chest* chest = new MagicChest();
+                                                findChest(chest, player);
+                                                delete chest;
+                                        }
+                                }
+				}
 
                         }
                 }
@@ -201,6 +295,31 @@ int main(){
 				player->setCurrentHealth(player->getMaxHealth());
                                 cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;
 				//ADDED CODE
+                                if(floor >= 3){
+				int treasureChance = rand() % 3;
+				if (treasureChance == 0 || treasureChance == 1){
+                                	cout <<  "--------------------------------------------------" << endl;
+                                	cout << "You found a treasure room! The room is booby-trapped so you may only select one Chest. Press \"1\" for the Physical chest, and \"2\" for the Magical Chest." << endl;
+                                	int chestSelect = 0;
+                                	cin >> chestSelect;
+                                        	while (chestSelect != 1 && chestSelect != 2) {
+                                                	cout << "Invalid input. Please press \"1\" to open the Physical chest, and \"2\" for the Magical Chest." << endl;
+                                               		cin >> chestSelect;
+                                        	}
+                                        	if (chestSelect == 1){
+                                                	cout << endl << "You open the Physical chest!" << endl;
+                                                	Chest* chest = new PhysicalChest();
+                                                	findChest(chest, player);
+                                                	delete chest;
+                                        	}
+                                        	else {
+                                                	cout << endl << "You open the Magical chest!" << endl;
+                                                	Chest* chest = new MagicChest();
+                                                	findChest(chest, player);
+                                                	delete chest;
+                                        	}
+                                }
+				}
 
                         }
                 }
@@ -210,7 +329,7 @@ int main(){
 		   cout << endl << "--------------------------------------------------" << endl;
                 }
                 else {
-                   cout << "You tread carefully through the corridor..." << endl;
+                   cout << "Each step sends a chill down your spine..." << endl;
                    cout << endl << "--------------------------------------------------" << endl;
 		}
 
