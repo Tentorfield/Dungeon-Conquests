@@ -18,7 +18,6 @@ TEST(StatTest, baseStatTest){
     // allocates 3 points in body, 4 in mind, 5 in spirit
     statTest->allocatePoints(3, 4, 5);
     EXPECT_EQ(statTest->getMind(), 4);
-
 }
 
 TEST(StatTest, compositeStatTest){

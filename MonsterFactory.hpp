@@ -13,7 +13,7 @@ class MonsterFactory {
     public:	
 	MonsterFactory();
 	MonsterFactory(int _floor);
-	
+        ~MonsterFactory();	
 	// generates a monster with stats based off the floor the player is on 
 	Monster* getMonster();
 	int getFloor();

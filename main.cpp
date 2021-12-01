@@ -110,6 +110,7 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 	if (mHth <= 0 && player->getCurrentHealth() != 0) {
 		cout << endl << "--------------------------------------------------" << endl; 
 	    	cout << "You have defeated the " << monster->monsterType() << "!" << endl;
+		//delete monster;
 		player->nextLevel();
 		cout << endl << "--------------------------------------------------" << endl;
 	    // function for exp allocation is called
@@ -144,7 +145,7 @@ void findChest(Chest* chest, Player* player){
                 cout << endl << "--------------------------------------------------" << endl;
 
 		return;
-	}  	
+	}
 }
 
 
@@ -152,7 +153,7 @@ void findChest(Chest* chest, Player* player){
 
 
 int main(){
-    int  input = 0;
+    char input = '0';
     bool endOfGame = false;
     int floor = 1;
     
@@ -173,7 +174,7 @@ int main(){
     while (endOfGame != true){	
 	    cout << "Where to next? Left door(1), Middle door(2), Right door(3), Player Stats(4)" << endl; 
 	    cin >> input;
-	    if (input == 1) {
+	    if (input == '1') {
 	        cout << endl <<  "--------------------------------------------------" << endl; 
 		int outcome = rand() % 2;
 
@@ -227,7 +228,7 @@ int main(){
 		}
 
     	    }
-	    else if (input == 2) {
+	    else if (input == '2') {
 		cout << endl << "--------------------------------------------------" << endl; 
                 int outcome = rand() % 2;
 
@@ -280,7 +281,7 @@ int main(){
 		   cout << endl << "--------------------------------------------------" << endl;
                 }
 	    }
-	    else if (input == 3) { 
+	    else if (input == '3') { 
 		cout << endl << "--------------------------------------------------" << endl;
                 int outcome = rand() % 2;
 
@@ -334,16 +335,18 @@ int main(){
 		}
 
 	    }
-            else if (input == 4){
+            else if (input == '4'){
 		cout << player->getName() << "'s stats: ";
 		player->displayPlayerStats();
 	   	cout << endl << "--------------------------------------------------" << endl; 
 	    }
 	    else { 
 	        cout << "Invalid input, please try again!" << endl;
+		cin >> input;
 	    }
 	}
-
-    return 0;
+	delete player;
+	delete factory;	
+    	return 0;
 }
 

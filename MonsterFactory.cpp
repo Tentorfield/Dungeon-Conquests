@@ -8,7 +8,9 @@
 		this->floor = 1;
 		randomMonster = nullptr;	
 	}
-
+	MonsterFactory::~MonsterFactory(){
+		delete this->randomMonster;
+	}
 	MonsterFactory::MonsterFactory(int _floor){
 		
 		this->floor = _floor;
