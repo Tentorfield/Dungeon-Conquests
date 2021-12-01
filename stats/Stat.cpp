@@ -5,6 +5,9 @@
 		this->physicalAtkVal = 10;
 		this->magicAtkVal = 0;
 		this->defenseVal = 0;
+		this->bodyVal = 0;
+		this->mindVal = 0;
+		this->spiritVal = 0;
 	} 
 	Stat::Stat(int baseAttack, int baseHealth){
 		this->physicalAtkVal = baseAttack;

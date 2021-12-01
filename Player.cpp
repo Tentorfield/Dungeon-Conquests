@@ -3,7 +3,7 @@
 
 		Player::Player(){
 			this->name = "";
-			this->expPoints = 0;
+			//this->expPoints = 0;
 			this->level = 1;
 			this->expPoints = 0;
 			this->freePoints = 0;
@@ -62,7 +62,17 @@
 		}
 
 		string Player::distributePoints() { 
-			int bodyAllocation, mindAllocation, spiritAllocation;
+			int bodyAllocation = 0;
+			int mindAllocation = 0;
+			int spiritAllocation = 0;
+
+			cout << "\nHow many points would you like to invest in Body? ";
+			cin >> bodyAllocation;	
+			cout << "\nHow many points would you like to invest in Mind? ";
+			cin >> mindAllocation;
+			cout << "\nHow many points would you like to invest in Spirit? ";
+			cin >> spiritAllocation;
+			cout << endl;
 			while ( freePoints < (bodyAllocation + mindAllocation + spiritAllocation)){
 				cout << "\nHow many points would you like to invest in Body? ";
 				cin >> bodyAllocation;	
