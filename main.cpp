@@ -107,12 +107,6 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 }
 }
 
-//void findChest(Chest* chest, Player* player){
-	
-//}
-
-
-// this is a general outline of how the interface should be: as small and modular as possible with lots of helper functions
 
 int main(){
     int  input = 0;
@@ -151,13 +145,6 @@ int main(){
 				player->setCurrentHealth(player->getMaxHealth());
                                 cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;
 				//ADDED CODE
-				//if(floor >= 3){
-				//cout <<  "--------------------------------------------------" << endl;
-				//cout << "You found a treasure room! The room is trapped so you may only select one Chest. Press "1" for the Physical chest, and "2" for the Magical Chest." << endl;
-				//int chestSelect = 0;
-				//cin << chestSelect;
-				//if (
-				//}
 			}	
 		}
 	        
