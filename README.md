@@ -35,6 +35,8 @@
  ## Screenshots
  > Screenshots of the input/output after running your application
  > ![FINALPROJECTSC1](https://user-images.githubusercontent.com/90116913/144126490-12f58d33-4b60-4f92-9532-d41b9503be09.PNG)
+ > ![FINALPROJECTS2](https://user-images.githubusercontent.com/58090168/144185566-90ebc7c1-4fab-436a-bcc2-4a82a3df33c0.png)
+
 
  ## Installation/Usage
 On your terminal, type and enter "g++ main.cpp". Finally, type "./a.out" and press enter.
