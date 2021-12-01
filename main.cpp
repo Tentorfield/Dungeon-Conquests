@@ -41,8 +41,8 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 		cout << "MONSTER TYPE: " <<  monster->monsterType() << endl;
 		cout << "ATTACK:" << monster->getAttack() << endl;
 		cout << "MAGICAL DEF: " << monster->getMagicalDef() << endl;
-		cout << "PHYSICAL DEF: " << monster->getPhysicalDef() << endl;
-		cout << "The monster's health is at " << mHth << endl << "Your player's health is at " << player->getCurrentHealth();
+		cout << "PHYSICAL DEF: " << monster->getPhysicalDef() << endl << endl;
+		cout << "The monster's health is at " << mHth << endl << endl << "Your player's health is at " << player->getCurrentHealth();
         	cout << endl << "--------------------------------------------------" << endl;
 	    }
 	    else if (option == 2) {
@@ -65,8 +65,8 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
                 if (player->getCurrentHealth() < 0){
                 player->setCurrentHealth(0);
                 }
-		cout << "Monster Health : " << mHth << endl;
-		cout << "Player Health : " << player->getCurrentHealth();	
+		cout << endl << "Monster Health : " << mHth << endl;
+		cout << endl <<  "Player Health : " << player->getCurrentHealth();	
 		cout << endl << "--------------------------------------------------" << endl;
 	    }
 	    else if (option == 3) {	 
@@ -89,14 +89,14 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 		if (player->getCurrentHealth() < 0){
 		player->setCurrentHealth(0);
 		}
-                cout << "Monster Health : " << mHth << endl;
-                cout << "Player Health : " << player->getCurrentHealth();
+                cout << endl << "Monster Health : " << mHth << endl;
+                cout << endl <<  "Player Health : " << player->getCurrentHealth();
 		cout << endl << "--------------------------------------------------" << endl;
 	    }
             else if (option == 4){
                 cout << player->getName() << "'s stats: ";
                 player->displayPlayerStats();
-		cout << "The monster's health is at " << mHth << endl << "Your player's health is at " << player->getCurrentHealth();
+		cout << endl <<  "The monster's health is at " << mHth << endl << endl << "Your player's health is at " << player->getCurrentHealth();
                 cout << endl << "--------------------------------------------------" << endl;
             }
 	    else {
