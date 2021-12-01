@@ -1,6 +1,7 @@
 
-#include "Player.cpp"
-//#include "MonsterFactory.hpp"
+//#include "Player.cpp"
+#include "Chest.hpp" // ADDED`
+//#include "MonsterFactory.hppi"
 #include <iostream>
 
 using namespace std;
@@ -100,7 +101,11 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 	    cout << "YOU DIED" << endl;
 	    endOfGame = true;
 	    return;
-	}
+}
+}
+
+void findChest(Chest* chest, Player* player){
+	
 }
 
 
@@ -142,7 +147,14 @@ int main(){
 				cout << "You've reached a staircase and have entered a new floor!" << endl;
 				player->setCurrentHealth(player->getMaxHealth());
                                 cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;
-
+				//ADDED CODE
+				if(floor >= 3){
+				cout <<  "--------------------------------------------------" << endl;
+				cout << "You found a treasure room! The room is trapped so you may only select one Chest. Press "1" for the Physical chest, and "2" for the Magical Chest." << endl;
+				int chestSelect = 0;
+				cin << chestSelect;
+				if (
+				}
 			}	
 		}
 	        
@@ -170,6 +182,8 @@ int main(){
 				cout << "You've reached a staircase and have entered a new floor!" << endl;
 				player->setCurrentHealth(player->getMaxHealth());
 				cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;  
+				//ADDED CODE
+
                         }
                 }
 
@@ -196,6 +210,7 @@ int main(){
 				cout << "You've reached a staircase and have entered a new floor!" << endl;
 				player->setCurrentHealth(player->getMaxHealth());
                                 cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;
+				//ADDED CODE
 
                         }
                 }
