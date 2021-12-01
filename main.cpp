@@ -5,7 +5,7 @@
 #include "PhysicalChest.hpp"
 //#include "MonsterFactory.hppi"
 #include <iostream>
-
+#include <cstdlib>
 using namespace std;
 
 void introduction(Player* &player) { 
@@ -15,7 +15,7 @@ void introduction(Player* &player) {
 	if (input == 'y' || input == 'Y') { 
 	    cout << "\nGreat, let's get you started. Dungeon Conquest is a game about adventure and slaying monsters." 
 		 << "\nFollow the directions for inputs for each of your character actions. Play to your heart's content! " << endl;
-	}
+
 	cout << "What is your name, traveler?" << endl;
 	string name;
 	cin.ignore();
@@ -23,7 +23,10 @@ void introduction(Player* &player) {
 	player->setName(name);
 	cout << endl;
 	cout << "Welcome, " << name << " you have just entered the dungeon!" << endl;
-	return;
+	}
+	else{
+		exit(1);
+	}
 }
 
 // a fight method outline that (hopefully) can be used for every enemy the player encounters
@@ -99,7 +102,7 @@ void fight(Player* &player, Monster* monster, bool &endOfGame) {
 		cout << endl <<  "The monster's health is at " << mHth << endl << endl << "Your player's health is at " << player->getCurrentHealth();
                 cout << endl << "--------------------------------------------------" << endl;
             }
-	    else {
+	    else if (!(option == 1 || option == 2 || option == 3 || option == 4)){
 		cout << "Invalid input, please try again." << endl;
 		cin >> option;
 	    }
@@ -147,6 +150,7 @@ void findChest(Chest* chest, Player* player){
 
 // this is a general outline of how the interface should be: as small and modular as possible with lots of helper functions
 
+
 int main(){
     int  input = 0;
     bool endOfGame = false;
@@ -184,6 +188,7 @@ int main(){
 				player->setCurrentHealth(player->getMaxHealth());
                                 cout << "Health is restored! Total health: " << player->getCurrentHealth() << endl;
 				//ADDED CODE
+
 				if(floor >= 3){
 				int treasureChance = rand() % 3;
 				if (treasureChance == 0 || treasureChance == 1){
