@@ -24,13 +24,6 @@
 * We decide to stick with Composite and Strategy patterns for our project. However, there are several major changes in our updated UML diagram that we would like to mention, specifically Composite Pattern. First, we decided to scrap the original "BaseAttributes" class implementation, replaced it with the "Stats" and its derived classes as our. For each level up, the player will have the option to allocate their 10 stats points on Mind, Body, and Spirit. These three atributes has a major impact on the multipliers for player's health, attack, magic, and defense. With the change mentioned above, we have decided to scrub "Warrior" and "Mage" subclasses, only keeping Player class.
 
 * Overall, the two design patterns help us plan for our game in a more organized matter. In a sense, the composite pattern made the workflow alot easier when coding player-sided perspective. This is because composite pattern made the connections of many components comprehenable. This way, we are able to easily structure groups like the Player and Stats class as a whole. For Monster Class, using strategy pattern ended up being the right decision because we want the complexities derived from Monster Class to be simplified for the client or interface. Also, since the characteristics of the three types of monsters (Dwarfs, Ghost, Normal) are monotonal, we are able to use strategy pattern to increased the consistency among the three monster sub-classes.   
-
- > ## Final deliverable
- > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
  
  ## Screenshots
  > Screenshots of the input/output after running your application
